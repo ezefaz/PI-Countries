@@ -5,13 +5,15 @@ const path = require('path');
 const {
   DB_USER, DB_PASSWORD, DB_HOST,
 } = process.env;
+console.log(DB_HOST)
+console.log(DB_PASSWORD)
+console.log(DB_USER)
 
 const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/countries`, {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 });
 const basename = path.basename(__filename);
-
 const modelDefiners = [];
 
 // Leemos todos los archivos de la carpeta Models, los requerimos y agregamos al arreglo modelDefiners
@@ -38,7 +40,8 @@ const { Activity } = sequelize.models;
 
 // aca estoy diciendo: mi tabla de countries, pertenece a muchas actividades de mi tabla de personajes, esto se reflejara en mi tabla intermedia.
 Country.belongsToMany(Activity, {through: 'activities_countries' }) //estoy creando y relacionando con la tabla intermedia llamada "activities-countries"
-Activity.belongsToMany(Country, {through: 'activies_countries' })
+Activity.belongsToMany(Country, {through: 'activities_countries' })
+
 
 
 module.exports = {
