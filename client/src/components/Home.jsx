@@ -10,6 +10,15 @@ function Home () {
     const stateLoading = useSelector((state) => state.loading)
 
     const [currentPage, setCurrentPage] = useState(1);
+
+
+    useEffect (() => {
+        dispatch(getCountries())
+        dispatch(getActivity())
+          
+      
+    }, [])
+    
     return ( 
         <div>
 

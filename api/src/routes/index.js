@@ -1,32 +1,12 @@
-const axios = require('axios')
-const Router = require('express');
-const server = require('express').Router()
+const { Router } = require('express');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
+const countryRouter = require('./country')
 
-const getApiInfo = async () => {
-    const { data } = await axios('https://restcountries.com/v3/all')
-    const api = await data.map(country => {
-        return {
-            id: country.cca3,
-            name: country.name.common,
-            flag: country.flag[0],
-            continent: country.continents[0],
-            capital: country.capital?.[0],
-            area: country.area,
-            population: country.population
-        }
-    });
-    const result = await Country.bulkCreate(api)
-    return result;
-}
-
-
-
-// const router = Router();
+const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
-
+router.use('/', countryRouter)
 
 module.exports = router;
