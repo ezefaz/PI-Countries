@@ -43,18 +43,18 @@ const ActInfo = async() => {
     })
 }
 
-server.get("/countries/:id", async function (req, res){
+server.get("/countries/:id", async function (req, res) {
     const id = req.params.id.toUpperCase()
-    const allCountries = await getDbInfo();
+    const allCountries = await getDbInfo(); // me traigo la funcion que me trae todos los datos de la BD
     if ( id ) {
-        const idCountries = allCountries.filter( i => i.id === id )
+        const idCountries = await allCountries.filter( e => e.id === id.toUpperCase() )  // dentro de todos los personajes, quiero que me filtre el ID que le estoy pasando.
         idCountries.length?
         res.status(200).send(idCountries) :
         res.status(404).send('Set a valid ID')
     }
 })
 
-server.get("/countries", async function (req, res){
+server.get("/countries", async function (req, res) {
     const { name } = req.query;
     let countries;
     const countryDB = await Country.count(); 
@@ -62,15 +62,15 @@ server.get("/countries", async function (req, res){
     await getApiInfo() :
     await getDbInfo() 
 if ( name ) {
-    const byName = countries.filter(n => n.id.toLowerCase().includes(name.toLowerCase())); // siempre va a comparar los valores en minuscula, sino la busqueda que se realice puede ser erronea
-    byName.length ? 
-    res.status(200).send(byName) :
+    const countryName = countries.filter(n => n.id.toLowerCase().includes(name.toLowerCase())); // siempre va a comparar los valores en minuscula, sino la busqueda que se realice puede ser erronea
+    countryName.length ? 
+    res.status(200).send(countryName) :
     res.status(404).send('No country been found')
 }  else {
    res.status(200).send(countries)  // si no hay ningun query, le mando todos los paises.
 }
 })
-server.post("/activity", async function (req,res){
+server.post("/activity", async function (req, res){
     const {
         name,
         season,
@@ -78,17 +78,16 @@ server.post("/activity", async function (req,res){
         difficulty, 
         idCountry
     } = req.body;
-
-     try{
-        const actCreated = await Activity.create({
+     try {
+        const actCreated = await Activity.create ({
             name,
             season,
             duration,
             difficulty,
         })
 
-        if(idCountry){
-         actCreated.addCountry(idCountry)
+        if ( idCountry ) {
+         actCreated.addCountry(idCountry) // el addCountry es un método de sequelize que nos trae de la tabla lo que le pasemos
         }
         res.send(actCreated) 
         
@@ -100,7 +99,6 @@ server.post("/activity", async function (req,res){
 
 server.get('/activity', async function (req, res){
     const act = await ActInfo()
-    console.log(act)
     res.status(200).send(act)
 }) 
  
