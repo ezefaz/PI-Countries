@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
     id: {                        // si yo no especifico el ID, sequelize de por si le va a asignar uno numérico.
       type: DataTypes.STRING,
       allowNull: false,
-      primaryKey: true        // significa que el ID sera la clave primaria
+      primaryKey: true        // significa que el ID sera la clave primaria y que no debe repetirse
     },
     flag: {
       type: DataTypes.STRING,
