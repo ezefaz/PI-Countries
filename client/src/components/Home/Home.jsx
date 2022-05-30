@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCountries } from '../../redux/actions'
+import Continent from '../Continent/continent'
 import { Link } from 'react-router-dom' 
 
 export default function Home () {
@@ -34,8 +35,11 @@ export default function Home () {
                     <option value='ascending'>ascending</option>
                     <option value='descending'>descending</option>
                 </select>
-            </div>
-
+                <select> 
+                    <option value='A-Z'>a-z</option>
+                </select>
+                <Continent/>
+            </div>  
 
 
         </div>

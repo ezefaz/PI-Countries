@@ -22,11 +22,11 @@ export const ALL_OF_ANTARTICA = "Antartica"
 
 export const ORDER_BY_POPULATION = 'POPULATION'
 export const HIGHER_POPULATION = 'HIGHER_POPULATION'
-export const LESS_POPULATION = 'LESS_POPULATION'
+export const LOWER_POPULATION = 'LOWER_POPULATION'
 
-export const VERANO = 'Verano'
-export const OTOÑO = 'Otoño'
-export const INVIERNO = 'Invierno'
-export const PRIMAVERA = 'Primavera'
+export const SUMMER = 'Summer'
+export const AUTUMN = 'Autumn'
+export const WINTER = 'Winter'
+export const SPRING = 'Spring'
 
 export const RESET = 'RESET'

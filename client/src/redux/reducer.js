@@ -15,7 +15,7 @@ function rootReducer (state = initialState, action) {
             return {
                 ...state,
                 countries: action.payload,
-                allCountries: action.payload
+                allCountries: action.payload // estoy diciendo: en mi estado allCountries, guarda todo lo que te mande la action getCountries
             }
             case FILTER_BY_CONTINENT: 
             const everyCountry = state.allCountries
@@ -47,7 +47,7 @@ function rootReducer (state = initialState, action) {
                     case DETAIL:
                         return {
                             ...state,
-                            detailt: action.payload
+                            detail: action.payload
                         }
                         case RESET: 
                         return {
@@ -60,7 +60,7 @@ function rootReducer (state = initialState, action) {
                             countries: action.payload 
                         }
                         case ORDER_BY_NAME: 
-                        let orderByName = action.payload === ASCENDENTE ? state.countries.sort((a, b) => {
+                        let orderByName = action.payload === ASCENDENT ? state.countries.sort((a, b) => {
                             if (a.name < b.name) {
                                 return -1;
                             }
