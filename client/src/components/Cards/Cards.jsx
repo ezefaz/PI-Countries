@@ -5,9 +5,9 @@ import { getCountries, getActivities, getContinents, orderByName, orderByPopulat
 import { LOWER_POPULATION, HIGHER_POPULATION, ALL, ALL_OF_AFRICA, ALL_OF_N_AMERICA, ALL_OF_S_AMERICA, ALL_OF_ANTARTICA, ALL_OF_ASIA, ALL_OF_EUROPE, ALL_OF_OCEANIA, ASCENDENT, DESCENDENT } from ''
 import Card from '../Card/Card'
 import Paginado from '../Paginado/Paginado' 
-import './Cards.css'
+// import './Cards.css'
 
-export default function Home() {
+export default function Cards() {
     const dispatch = useDispatch()
     const activities = useSelector((state) => state.activities)
     const countries = useSelector((state) => state.countries)
@@ -58,57 +58,60 @@ export default function Home() {
     }, [dispatch])
 
     return ( 
-        <div className ='cardsContainer'>
-            <div className='filterContainer'>
-                <button id='b1' className='filterOrder' onClick={(e) => refreshCountries(e)}>Refresh</button>
-                    <select className='filterOrder'>
-                        onChange={(e) => {
-                            handleSort(e)
-                        }}
-                        <option>FILTER BY ALPHABETICAL ORDER</option>
-                        <option value={ASCENDENT} />
-                        <option value={DESCENDENT} />
-                    </select>
+    <div className ='cardsContainer'>
+        <div className='filterContainer'>
+            <button id='b1' className='filterOrder' onClick={(e) => refreshCountries(e)}>Refresh</button>
+                <select className='filterOrder'
+                    onChange={(e) => {
+                        handleSort(e)
+                    }}
+                    >
+                    <option>FILTER BY ALPHABETICAL ORDER</option>
+                    <option value={ASCENDENT}>A-Z</option> 
+                    <option value={DESCENDENT}>Z-A</option>
+                </select>
 
-                    <select className='filterOrder'>
-                        onChange={(e) => {
-                            handleSort2(e)
-                        }}
-                        <option>FILTER BY POPULATION</option>
-                        <option value={HIGHER_POPULATION} />
-                        <option value={LOWER_POPULATION} />
-                    </select>
+                <select className='filterOrder'
+                    onChange={(e) => {
+                        handleSort2(e)
+                    }}
+                    >
+                    <option>FILTER BY POPULATION</option>
+                    <option value={HIGHER_POPULATION}>Higher population</option>
+                    <option value={LOWER_POPULATION}>Lower population</option>
+                </select>
 
-                    <select className='filterOrder' onChange={(e) => handleFilterActivities(e)}> 
+                <select className='filterOrder' onChange={(e) => handleFilterActivities(e)}> 
                     <option value='todos'>Activities</option>
                     {activities.map((v) => (
                         <option value={v.name}>{v.name}</option> 
                     ))}
-                    </select>
+                </select>
 
-                    <select className='filterAndOrder' onChange={(e) => handleFilterContinent(e)}>
-                        <option value="continent">Continents</option>
-                        <option value={ALL}>All</option>
-                        <option value={ALL_OF_AFRICA}>Africa</option>
-                        <option value={ALL_OF_ANTARTICA}>Antartica</option>
-                        <option value={ALL_OF_N_AMERICA}>North America</option>
-                        <option value={ALL_OF_S_AMERICA}>South America</option>
-                        <option value={ALL_OF_ASIA}>Asia</option>
-                        <option value={ALL_OF_EUROPE}>Europe</option>
-                        <option value={ALL_OF_OCEANIA}>Oceania</option>
-                     </select>
-                </div> 
+                <select className='filterAndOrder' onChange={(e) => handleFilterContinent(e)}>
+                    <option value="continent">Continents</option>
+                    <option value={ALL}>All</option>
+                    <option value={ALL_OF_AFRICA}>Africa</option>
+                    <option value={ALL_OF_ANTARTICA}>Antartica</option>
+                    <option value={ALL_OF_N_AMERICA}>North America</option>
+                    <option value={ALL_OF_S_AMERICA}>South America</option>
+                    <option value={ALL_OF_ASIA}>Asia</option>
+                    <option value={ALL_OF_EUROPE}>Europe</option>
+                    <option value={ALL_OF_OCEANIA}>Oceania</option>
+                </select>
+            </div> 
                 
-                <Paginado 
+            <Paginado 
                 countriesPerPage={countriesPerPage}
                 countries={countries.length}
                 paginado={paginado}
                 />
+
             <div className='cardsBox'> 
-                {currentCountryCountry?.map((country) => {
+                {currentCountry?.map((country) => {
                     return (
                         <div key={country.id}>
-                            <Link to={'/home' + country.id}> 
+                            <Link to={'/home/' + country.id}> 
                             <Card 
                                 name={country.name}
                                 flag={country.flag}
@@ -117,10 +120,10 @@ export default function Home() {
                                 population={country.population}   
                                 />                                                     
                             </Link>
-             </div>
-                )
-            })}
-        </div>
+                        </div>
+                    )
+                })}
+            </div>
         </div>
     )
 }

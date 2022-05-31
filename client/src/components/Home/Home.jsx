@@ -1,51 +1,17 @@
-import React from 'react'
-import { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getCountries } from '../../redux/actions'
-import Continent from '../Continent/continent'
-import { Link } from 'react-router-dom' 
+import React from "react";
+import NavBar from '../NavBar/NavBar'
+import Cards from '../Cards/Cards'
+import './Home.css'
 
-export default function Home () {
-    const dispatch = useDispatch()
-    const countries = useSelector((state) => state.allCountries) // esto es lo mismo que hacer el mapStateToProps. COn useSelector traeme todo lo que esta en allCountries, en lugar de hacer el connect y toda la logica
-    console.log(countries)
-
-    useEffect (() => {
-        dispatch(getCountries)
-    }, []) // => pongo el arreglo vacio para que no se genere un loop infinito
-
-
-
-    function handleClick() {
-        e.preventDefault();
-        dispatch(getCountries())
-    }
-
-    return(
-        <div className='home'>
-            <div className='container'>
-                <Link to='/activity'>Create Activity</Link>
-                <h1>COUNTRIES</h1>
-                <button onClick={e => {handleClick(e)}}> 
-                    Refresh countries
-                </button>
-            </div>
-            <div>
-                <select>
-                    <option value='ascending'>ascending</option>
-                    <option value='descending'>descending</option>
-                </select>
-                <select> 
-                    <option value='A-Z'>a-z</option>
-                </select>
-                <Continent/>
-            </div>  
-
-
-        </div>
-
-
-
-
-    )
+export default function Home() {
+  return (
+    <div className = 'homeContainer'>
+      <div className = 'navBar'>
+      <NavBar/>
+     </div>
+     <div className = 'cards'>
+      <Cards/>
+     </div>
+    </div>
+  );
 }

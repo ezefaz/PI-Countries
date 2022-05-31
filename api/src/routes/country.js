@@ -2,7 +2,6 @@ const axios = require('axios');
 const { Router } = require('express')
 const router = Router();
 const { Country, Activity } = require ('../db')
-const server = require('express').Router()
 
 // estoy usando Async await porque no sabemos cuanto puede tardar la respuesta, entonces debo avisar que se tiene que esperar 
 // a la respuesta antes de agregar informacion a la variable API, que es la base de datos.
@@ -43,7 +42,7 @@ const ActInfo = async() => {
     })
 }
 
-server.get("/countries/:id", async function (req, res) {
+router.get("/:id", async function (req, res) {
     const id = req.params.id.toUpperCase()
     const allCountries = await getDbInfo(); // me traigo la funcion que me trae todos los datos de la BD
     if ( id ) {
@@ -54,7 +53,7 @@ server.get("/countries/:id", async function (req, res) {
     }
 })
 
-server.get("/countries", async function (req, res) {
+router.get("/", async function (req, res) {
     const { name } = req.query;
     let countries;
     const countryDB = await Country.count(); 
@@ -70,36 +69,5 @@ if ( name ) {
    res.status(200).send(countries)  // si no hay ningun query, le mando todos los paises.
 }
 })
-server.post("/activity", async function (req, res){
-    const {
-        name,
-        season,
-        duration,
-        difficulty, 
-        idCountry
-    } = req.body;
-     try {
-        const actCreated = await Activity.create ({
-            name,
-            season,
-            duration,
-            difficulty,
-        })
 
-        if ( idCountry ) {
-         actCreated.addCountry(idCountry) // el addCountry es un método de sequelize que nos trae de la tabla lo que le pasemos
-        }
-        res.send(actCreated) 
-        
-    }
-    catch(err){
-        console.log(err)
-    }
-})
-
-server.get('/activity', async function (req, res){
-    const act = await ActInfo()
-    res.status(200).send(act)
-}) 
- 
-module.exports = server
+module.exports = router
