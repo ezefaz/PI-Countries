@@ -2,45 +2,10 @@ const axios = require('axios');
 const { Router } = require('express')
 const router = Router();
 const { Country, Activity } = require ('../db')
+const { getDbInfo, getApiInfo } = require('../controller/controller')
 
 // estoy usando Async await porque no sabemos cuanto puede tardar la respuesta, entonces debo avisar que se tiene que esperar 
 // a la respuesta antes de agregar informacion a la variable API, que es la base de datos.
-
-
-const getApiInfo = async () => {
-    const apiUrl = await axios.get('https://restcountries.com/v3/all')
-    const apiInfo = await apiUrl.data.map(country => { 
-        
-        return {
-           id: country.cca3,
-           name: country.name.common,
-           flag: country.flags[0],
-           continent: country.continents[0],
-           capital: country.capital, 
-           subregion: country.subregion,
-           area: country.area,
-           population: country.population
-        }
-    });
-    const result = await Country.bulkCreate(apiInfo)
-    return result;
-}
-const getDbInfo = async() => { 
-    return await Country.findAll({ //findAll lo utilizo para traer info de la base de datos.
-        include: {
-            model: Activity,
-            attributes: ['name', 'difficulty', 'duration', 'season'],
-            through: {
-                attributes: []
-            }
-        }
-    })
-}
-const ActInfo = async() => {
-    return await Activity.findAll({
-        include: Country
-    })
-}
 
 router.get("/:id", async function (req, res) {
     const id = req.params.id.toUpperCase()

@@ -12,10 +12,10 @@ function App() {
       <div className="App"> 
         <Switch> 
           <Route exact path = '/' component = {LandingPage} />
-          <Route exact path ='/home' component = {Home} />
-          <Route exact path ='/activity' component = {ActivityCreate} />
-          <Route exact path = '/activities' component = {ActivitiesList} />
-          <Route exact path = '/home/:id' component = {Detail} />
+          <Route path ='/home' component = {Home} />
+          <Route path ='/activity' component = {ActivityCreate} />
+          <Route path = '/activities' component = {ActivitiesList} />
+          <Route path = '/home/:id' component = {Detail} />
         </Switch>
       </div>
     </BrowserRouter>

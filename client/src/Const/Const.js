@@ -18,7 +18,7 @@ export const ALL_OF_ASIA = "Asia"
 export const ALL_OF_AFRICA = "Africa"
 export const ALL_OF_EUROPE = "Europe"
 export const ALL_OF_OCEANIA = "Oceania"
-export const ALL_OF_ANTARTICA = "Antartica"
+export const ALL_OF_ANTARCTICA = "Antarctica"
 
 export const ORDER_BY_POPULATION = 'POPULATION'
 export const HIGHER_POPULATION = 'HIGHER_POPULATION'

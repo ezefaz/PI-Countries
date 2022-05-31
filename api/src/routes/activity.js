@@ -1,7 +1,7 @@
 const { Router } = require('express')
 const router = Router();
-const { Activity, Country } = require('../db.js');
-const { ActInfo } = require('../routes/country')
+const { Activity } = require('../db.js');
+const { getActivities } = require('../controller/controller')
 
 router.post("/", async function (req, res){
     const {
@@ -12,17 +12,19 @@ router.post("/", async function (req, res){
         idCountry
     } = req.body;
      try {
-        const actCreated = await Activity.create ({
+        const createActivity = await Activity.create ({
             name,
             season,
             duration,
             difficulty,
+            idCountry,
         })
 
         if ( idCountry ) {
-         actCreated.addCountry(idCountry) // el addCountry es un método de sequelize que nos trae de la tabla lo que le pasemos
+         createActivity.addCountry(idCountry) // el addCountry es un método de sequelize que nos trae de la tabla lo que le pasemos
+         res.status(200).send(createActivity)
         }
-        res.send(actCreated) 
+        res.send(createActivity) 
         
     }
     catch(err){
@@ -30,9 +32,9 @@ router.post("/", async function (req, res){
     }
 })
 
-router.get('/', async function (req, res){
-    const act = await ActInfo()
-    res.status(200).send(act)
+router.get('/', async function (req, res) {
+    const activities = await getActivities()
+    res.status(200).send(activities)
 }) 
  
 module.exports = router
