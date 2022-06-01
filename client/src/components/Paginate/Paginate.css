@@ -1,0 +1,38 @@
+.pag-container {
+    display: flex;
+    background-color: transparent ;
+    justify-content: center;
+    align-items: center;
+    height: 7vh;
+    margin-top: 20px;
+    margin-bottom: 50px;
+  }
+  
+  .ul {
+    padding: 0 0 0 0;
+    background-color: white;
+    width: 50vw;
+    height: 80%;
+    display: flex;    
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+  }
+  
+  .number-paginate {
+    background-color: #7A7A7B;
+    display: flex;
+    align-items: center;
+    justify-content: center ;
+    margin: 0 2px 0 3px;
+    cursor: pointer;
+    width: 1.8vw;
+    border-radius: 15px;
+    height: 4vh;
+    color: #ffffff;
+    font-size: large;
+  }
+  
+  .number-paginate:hover{
+    background-color:#2E2E2E;
+  }

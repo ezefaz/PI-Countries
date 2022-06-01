@@ -12,14 +12,20 @@ export default function Home() {
     
     const countries = useSelector((state) => state.countries);
   
-    const [currentPage, setCurrentPage] = useState(1);
-    const [countriesPerPage] = useState(10);
-    const lastCountry = currentPage * countriesPerPage;
-    const firstCountry = lastCountry - countriesPerPage;
-    const currentCountry = countries.slice(firstCountry, lastCountry);
+  // PAGINADO
+
+  // Primero voy a armar varios estados locales.
+
+
+    const [currentPage, setCurrentPage] = useState(1); // guardame en el estado local la pagina actual, que empieza en uno por que siempre voy a arrancar en la primer pagina
+    const [countriesPerPage] = useState(9);           //seteo los countries por pagina, el readme dice que sean 9.
+    const indexOfLastCountry = currentPage * countriesPerPage; // declaro una constante con el indice del ultimo pais. Mi numero de pagina (1) * los paises por pagina (9)
+    const indexOfFirstCountry = indexOfLastCountry - countriesPerPage; // esto daria 0. (9 - 9)
+    const currentCountry = countries.slice(indexOfFirstCountry, indexOfLastCountry); // esta constante va a tener los paises de la pagina actual. El slice agarra un arreglo y toma una porción, dependiendo de lo que le pase por parametro. En este caso el indice del primer y ultimo personaje.
+        
     const [, setOrden] = useState("");
   
-    const paginate = (pageNumber) => {
+    const paginate = (pageNumber) => {  // esta constante paginado nos va a ayudar al renderizado
       setCurrentPage(pageNumber);
     };
   
@@ -60,13 +66,13 @@ export default function Home() {
     return (
       <div className="cardsContainer">
         <div className="filterContainer">
-        <button id='b1' className='filterAndOrder' onClick={(e)=>refreshCountries(e)}>Recargar</button>
+        <button id='b1' className='filterAndOrder' onClick={(e)=>refreshCountries(e)}>Refresh</button>
           <select className='filterAndOrder'
             onChange={(e) => {
               handleSort(e);
             }}
           >
-            <option>Filtrar por Orden Alfabetico</option>
+            <option>Filter by alphabetic order</option>
             <option value={ASCENDENT}> A-Z </option>
             <option value={DESCENDENT}> Z-A </option>
           </select>
@@ -76,20 +82,20 @@ export default function Home() {
               handleSort2(e);
             }}
           >
-            <option>Filtrar por poblacion</option>
-            <option value={HIGHER_POPULATION}>Mayor Poblacion</option>
-            <option value={LOWER_POPULATION}>Menor Poblacion</option>
+            <option>Filter by population</option>
+            <option value={HIGHER_POPULATION}>Higher poblation</option>
+            <option value={LOWER_POPULATION}>Lower poblation</option>
           </select>
   
           <select className='filterAndOrder' onChange={(e) => handleFilterActivity(e)}>
-            <option value="todos"> Actividades </option>
+            <option value="todos"> Activities </option>
             {activities.map((v) => (
               <option value={v.name}>{v.name}</option>
             ))}
           </select>
   
           <select className='filterAndOrder' onChange={(e) => handleFilterContinent(e)}>
-            <option value="continent">Continents</option>
+            <option>Continents</option>
             <option value={ALL}>ALL</option>
             <option value={ALL_OF_AFRICA}>Africa</option>
             <option value={ALL_OF_ANTARCTICA}>Antarctica</option>
@@ -102,9 +108,9 @@ export default function Home() {
         </div>
   
         <Paginate
-          countriesPerPage={countriesPerPage}
-          countries={countries.length}
-          paginate={paginate}
+          countriesPerPage={countriesPerPage} // le paso el estado de paises por pagina
+          countries={countries.length} // a los paises le paso el .length, ya que necesito un valor numerico.
+          paginate={paginate} // como paginado le voy a pasar la constante del paginado
         />
   
         <div className='cardsBox'>
