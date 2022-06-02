@@ -10,7 +10,7 @@
   
   .ul {
     padding: 0 0 0 0;
-    background-color: white;
+    /* background-color: white; */
     width: 50vw;
     height: 80%;
     display: flex;    
@@ -20,7 +20,9 @@
   }
   
   .number-paginate {
-    background-color: #7A7A7B;
+    background: #0F2027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
     display: flex;
     align-items: center;
     justify-content: center ;
@@ -33,6 +35,3 @@
     font-size: large;
   }
   
-  .number-paginate:hover{
-    background-color:#2E2E2E;
-  }

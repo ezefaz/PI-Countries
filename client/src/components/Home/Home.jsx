@@ -5,6 +5,7 @@ import { getCountries, orderByName, orderByPopulation, getActivities, getContine
 import { LOWER_POPULATION, HIGHER_POPULATION, ALL, ALL_OF_AFRICA, ALL_OF_ANTARCTICA, ALL_OF_ASIA, ALL_OF_S_AMERICA, ALL_OF_EUROPE, ALL_OF_N_AMERICA, ALL_OF_OCEANIA, ASCENDENT, DESCENDENT} from '../../Const/Const'
 import Card from '../Card/Card'
 import Paginate from '../Paginate/Paginate'
+import './Home.css'
 
 export default function Home() {
     const dispatch = useDispatch();
@@ -21,7 +22,7 @@ export default function Home() {
     const [countriesPerPage] = useState(9);           //seteo los countries por pagina, el readme dice que sean 9.
     const indexOfLastCountry = currentPage * countriesPerPage; // declaro una constante con el indice del ultimo pais. Mi numero de pagina (1) * los paises por pagina (9)
     const indexOfFirstCountry = indexOfLastCountry - countriesPerPage; // esto daria 0. (9 - 9)
-    const currentCountry = countries.slice(indexOfFirstCountry, indexOfLastCountry); // esta constante va a tener los paises de la pagina actual. El slice agarra un arreglo y toma una porción, dependiendo de lo que le pase por parametro. En este caso el indice del primer y ultimo personaje.
+    const currentCountry = countries.slice(indexOfFirstCountry, indexOfLastCountry); // esta constante va a guardar los paises a renderizar dependiendo de la pagina. Entonces, a todos los paises, hace un slice que agarra un arreglo y toma una porción, dependiendo de lo que le pase por parametro. En este caso el indice del primer y ultimo personaje. Esto va a ir modificandose dependiendo en la pagina en la que este
         
     const [, setOrden] = useState("");
   
@@ -40,6 +41,7 @@ export default function Home() {
     }
   
     function handleFilterActivity(e) {
+      e.preventDefault()
       dispatch(filterByActivities(e.target.value));
       setCurrentPage(1);
     }
@@ -48,7 +50,7 @@ export default function Home() {
       e.preventDefault();
       dispatch(orderByName(e.target.value));
       setCurrentPage(1);
-      setOrden(`Ordenado ${e.target.value}`);
+      setOrden(`Ordenado ${e.target.value}`); // sin este estado no me funcionaria.
     }
   
     function handleSort2(e) {
@@ -64,7 +66,7 @@ export default function Home() {
     }, [dispatch]);
   
     return (
-      <div className="cardsContainer">
+      <div className="cards-container">
         <div className="filterContainer">
         <button id='b1' className='filterAndOrder' onClick={(e)=>refreshCountries(e)}>Refresh</button>
           <select className='filterAndOrder'
@@ -72,7 +74,7 @@ export default function Home() {
               handleSort(e);
             }}
           >
-            <option>Filter by alphabetic order</option>
+            <option>Filter by alphabetical order</option>
             <option value={ASCENDENT}> A-Z </option>
             <option value={DESCENDENT}> Z-A </option>
           </select>
@@ -88,7 +90,7 @@ export default function Home() {
           </select>
   
           <select className='filterAndOrder' onChange={(e) => handleFilterActivity(e)}>
-            <option value="todos"> Activities </option>
+            <option value="todos">Activities</option>
             {activities.map((v) => (
               <option value={v.name}>{v.name}</option>
             ))}
@@ -96,7 +98,7 @@ export default function Home() {
   
           <select className='filterAndOrder' onChange={(e) => handleFilterContinent(e)}>
             <option>Continents</option>
-            <option value={ALL}>ALL</option>
+            <option value={ALL}>All</option>
             <option value={ALL_OF_AFRICA}>Africa</option>
             <option value={ALL_OF_ANTARCTICA}>Antarctica</option>
             <option value={ALL_OF_N_AMERICA}>North America</option>
@@ -107,7 +109,7 @@ export default function Home() {
           </select>
         </div>
   
-        <Paginate
+        <Paginate //le voy a pasar las props que necesita el componente para renderizarse.
           countriesPerPage={countriesPerPage} // le paso el estado de paises por pagina
           countries={countries.length} // a los paises le paso el .length, ya que necesito un valor numerico.
           paginate={paginate} // como paginado le voy a pasar la constante del paginado

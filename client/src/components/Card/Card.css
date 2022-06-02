@@ -1,5 +1,7 @@
 .cardContainer {
-    background-color: #232423;
+  background: #0F2027;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
     width: 17vw;
     height: 17rem;
     margin: 1px 0 2px 0;
@@ -7,10 +9,12 @@
     font-size: large;
     color: white;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     text-align: center;
     align-items: center;
     padding-bottom: 16px;
+    border-radius: 20px;
+    margin-bottom: 20px;
   }
   
   .infoConteiner {

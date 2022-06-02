@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { postActivities, getActivities } from '../../redux/actions'
+import { postActivities, getActivities, getCountries } from '../../redux/actions'
 import { WINTER, SUMMER, SPRING, AUTUMN } from '../../Const/Const'
 import NavBar from '../NavBar/NavBar'
-import "./ActivityCreate.css"
+import { Link } from 'react-router-dom'
+// import "./ActivityCreate.css"
 
 function validate(input) {
     let errors = {}
@@ -25,7 +26,7 @@ function validate(input) {
 export default function ActivityCreate () {
     const dispatch = useDispatch()
     const history = useHistory()
-    const countries = useSelector((state) => state.allCountries)
+    const countries = useSelector((state) => state.countries);
     const [errors, setErrors] = useState({})
 
     const [input, setInput] = useState({
@@ -33,37 +34,41 @@ export default function ActivityCreate () {
         duration: "",
         season:"",
         difficulty:"",
-        idCountry: []
+        idCountry: [],
     })
 
     useEffect(() => {
-        dispatch(getActivities())
+        
+        dispatch(getCountries());
     }, [dispatch])
 
     function handleChange(e) {
         setInput({
             ...input,
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
         })
         setErrors(
             validate({
                 ...input,
-                [e.target.name]: e.target.value
+                [e.target.name]: e.target.value,
             })
         )
     }
+
     function handleDelete(i) {
         setInput({
             ...input,
-            idCountry: input.idCountry.filter((e) => e !==i)
+            idCountry: input.idCountry.filter((e) => e !==i),
         })
     }
+
     function handleSelect(e) {
         setInput({
             ...input,
             idCountry: [...input.idCountry, e.target.value]
         })
     }
+
     function handleSubmit(e) {
         e.preventDefault()
         if (input.name === "" || input.duration === "" || input.season === "" || input.difficulty === "" ||
@@ -82,28 +87,28 @@ export default function ActivityCreate () {
     }
     return (
         <div className="">
-          <div>
-            <NavBar />
-          </div>
-    
-          <div className="activityCardContainer">
-            <div className="activityCard">
-              <div className="activityTitle">
+          <NavBar />
+          {/* <div>
+            <Link to='/home'><button>Return</button></Link>
+          </div> */}
+          <div className="act-card-container">
+            <div className="act-card">
+              <div className="act-title">
               </div>  
-    
-              <form className="formActivity" onSubmit={handleSubmit}>
-                <span className='titleCreateActivity'> Crea una Actividad </span>
-                <div className="inputActivities">
-                  <label className='labelActivity'></label>
+              <form className="form-act" onSubmit={handleSubmit}>
+                <span className='title-create-act'> Create an activity</span>
+                <div className="input-act">
+                  <label className='label-ct'></label>
                   <input
                     className="i"
                     type="text"
-                    placeholder="Coloque la Actividad..."
+                    placeholder="Put the activity name..."
                     value={input.name}
                     name="name"
                     onChange={handleChange}
                   />
-                  {errors.name && <p className="e">{errors.name}</p>}
+                  {errors.name                              // si esta mi estado errores, entonces renderizame un parrafo con el error
+                  && <p className="e">{errors.name}</p>}  
                 </div>
                 <div className="inputActivities">
                   <label></label>
@@ -112,13 +117,13 @@ export default function ActivityCreate () {
                     type="text"
                     value={input.duration}
                     name="duration"
-                    placeholder="Coloque la Duracion..."
+                    placeholder="Put the duration..."
                     onChange={handleChange}
                   />
                   {errors.duration && <p className="e">{errors.duration}</p>}
                 </div>
                 <div className="inputActivities">
-                  <label> Dificultad </label>
+                  <label>Difficulty</label>
                   <input
                     className="i"
                     type="range"
@@ -137,35 +142,36 @@ export default function ActivityCreate () {
                     value={input.season}
                     onChange={(e) => handleChange(e)}
                   >
-                    <option className='op' > Temporada </option>
-                    <option className='op' value={WINTER}>Invierno</option>
-                    <option className='op' value={SUMMER}>Verano</option>
-                    <option className='op' value={AUTUMN}>Otoño</option>
-                    <option className='op' value={SPRING}>Primavera</option>
+                    <option className='op'> Season </option>
+                    <option className='op' value={WINTER}>Winter</option>
+                    <option className='op' value={SUMMER}>Summer</option>
+                    <option className='op' value={AUTUMN}>Autumn</option>
+                    <option className='op' value={SPRING}>Spring</option>
                   </select>
                   {errors.season && <p className="e">{errors.season}</p>}
                 </div>
-                {errors.countryId && <p className="e">{errors.countryId}</p>}
+                {errors.idCountry && <p className="e">{errors.idCountry}</p>}
     
                 <div>
-                  <select  className="i" onChange={(e) => handleSelect(e)}>
-                    <option className='op' > Paises </option>
-                    {countries.map((v) => (
-                      <option className='op' value={v.id}>{v.name}</option>
+                  <select  className="All-countries" onChange={(e) => handleSelect(e)}>
+                    Countries
+                    {countries && countries.map(e => (
+                     <option value={e.id} name="countries" key={e.id} >{e.name}</option>
                     ))}
                   </select>
+                  
                 </div>
     
-                <div className="textArea">
-                  {input.countryId.map((country) => (
-                    <div className='countrieAndButton'>
-                      <input className='btnDelete' type='button' value='X' onClick={() => handleDelete(country)}/>
+                <div className="text-area">
+                  {input.idCountry.map((country) => (
+                    <div className='country-btn'>
+                      <input className='btn-del' type='button' value='X' onClick={() => handleDelete(country)}/>
                       <p className='pOfCountry'>{country}</p>
                     </div>
                   ))}
                 </div>
                 <div>
-                  <button className='btnActivity' type="submit">Crear Actividad</button>
+                  <button className='btn-act' type="submit">Create Activity</button>
                 </div>
               </form>
             </div>
