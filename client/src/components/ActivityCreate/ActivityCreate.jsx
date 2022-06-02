@@ -5,7 +5,7 @@ import { postActivities, getActivities, getCountries } from '../../redux/actions
 import { WINTER, SUMMER, SPRING, AUTUMN } from '../../Const/Const'
 import NavBar from '../NavBar/NavBar'
 import { Link } from 'react-router-dom'
-// import "./ActivityCreate.css"
+import "./ActivityCreate.css"
 
 function validate(input) {
     let errors = {}
@@ -98,7 +98,7 @@ export default function ActivityCreate () {
               <form className="form-act" onSubmit={handleSubmit}>
                 <span className='title-create-act'> Create an activity</span>
                 <div className="input-act">
-                  <label className='label-ct'></label>
+                  <label className='label-act'></label>
                   <input
                     className="i"
                     type="text"
@@ -166,7 +166,7 @@ export default function ActivityCreate () {
                   {input.idCountry.map((country) => (
                     <div className='country-btn'>
                       <input className='btn-del' type='button' value='X' onClick={() => handleDelete(country)}/>
-                      <p className='pOfCountry'>{country}</p>
+                      <p className='p-country'>{country}</p>
                     </div>
                   ))}
                 </div>

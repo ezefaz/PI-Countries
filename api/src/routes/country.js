@@ -1,7 +1,7 @@
 const axios = require('axios');
 const { Router } = require('express')
 const router = Router();
-const { Country, Activity } = require ('../db')
+const { Country } = require ('../db')
 const { getDbInfo, getApiInfo } = require('../controller/controller')
 
 // estoy usando Async await porque no sabemos cuanto puede tardar la respuesta, entonces debo avisar que se tiene que esperar 

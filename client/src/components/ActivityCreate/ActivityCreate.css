@@ -1,0 +1,137 @@
+
+.act-card-container {
+    display: flex;
+    background: #1A2980;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #26D0CE, #1A2980);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #26D0CE, #1A2980); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 0 0;
+  }
+  
+  .act-card {
+    background: #0F2027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
+    border-radius: 3px;
+    padding: 70px 100px;
+    color: white;
+  }
+  
+  .seasonInput {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  .title-create-act {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 23px;
+    margin: -50px 0 80px 0;
+    display: block;
+    text-align: center;
+  }
+  
+  .input-act{
+      position:relative;
+      margin-bottom:20px;
+  }
+  
+  .label-act{
+      position:absolute;
+      top:0px;
+      left:0px;
+      font-size:16px;
+      color:#fff;	
+      pointer-events: none;
+      transition: all 0.5s ease-in-out;
+  }
+  .i{ 
+    border:0;
+    border-bottom:1px solid #555;  
+    background:transparent;
+    width:100%;
+    padding:8px 0 5px 0;
+    font-size:16px;
+    color:#fff;
+  }
+  .i:focus{ 
+      border:none;	
+      outline:none;
+      border-bottom:1px solid #e74c3c;	
+  }
+  
+  .btn-act{
+      color:#fff;
+      background-color:#e74c3c;
+      outline: none;
+      border: 0;
+      color: #fff;
+      padding:10px 20px;
+      text-transform:uppercase;
+      margin-top:50px;
+      border-radius:5px;
+      cursor:pointer;
+      position:relative;
+  }
+  
+  .i:focus ~ .labelActivity,
+  .i:valid ~ .labelActivity{
+      top:-12px;
+      font-size:12px;
+      
+  }
+  
+  .op{
+      background-color: black;
+  }
+  
+  .text-area{
+    box-shadow: inset 1px 2px 6px 5px #141e27;
+    border-radius: 5px;
+    width: 100%;
+    margin: 2rem auto;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 8rem;
+  
+  }
+  
+  .country-btn{
+    background-color: black;
+    border: grey 3px solid;
+    width: 3.2rem;
+    height: 3rem;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .btn-del{
+    color: white;
+    background-color: red;
+    width: 1rem;
+    height: 1rem;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 0 0 0 33px;
+    padding: 0 0 0 0 ;
+    border-radius: 10px;
+    border: 0 0 0 0;
+    cursor: pointer	;
+    font-size: 10px ;
+  }
+  
+  .p-country{
+    margin: 5px;
+  }
+  
+  .e{
+      color: red;
+      font-size: small;
+  }

@@ -14,7 +14,7 @@ export default function ActivitiesList () {
             </div>
 
             <div className='act-cards'> {
-                activities?.map((a) => {
+               activities && activities?.map((a) => {
                     return (
                     <div className='act-card-list'>
                         <Activity 

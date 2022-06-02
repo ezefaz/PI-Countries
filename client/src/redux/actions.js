@@ -18,7 +18,7 @@ export function getCountries () {
 export function getCountriesDetails(id) {
     return async function (dispatch) {
         try {
-            let json = await axios (`http://localhost:3001/countries/${id}`)
+            var json = await axios (`http://localhost:3001/countries/${id}`)
                 return dispatch({
                     type: DETAIL,
                     payload: json.data

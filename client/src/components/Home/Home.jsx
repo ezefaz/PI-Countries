@@ -6,6 +6,7 @@ import { LOWER_POPULATION, HIGHER_POPULATION, ALL, ALL_OF_AFRICA, ALL_OF_ANTARCT
 import Card from '../Card/Card'
 import Paginate from '../Paginate/Paginate'
 import './Home.css'
+import NavBar from '../NavBar/NavBar'
 
 export default function Home() {
     const dispatch = useDispatch();
@@ -67,6 +68,9 @@ export default function Home() {
   
     return (
       <div className="cards-container">
+        <div>
+          <NavBar />
+        </div>
         <div className="filterContainer">
         <button id='b1' className='filterAndOrder' onClick={(e)=>refreshCountries(e)}>Refresh</button>
           <select className='filterAndOrder'
