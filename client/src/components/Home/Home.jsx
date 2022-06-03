@@ -123,7 +123,7 @@ export default function Home() {
           {currentCountry?.map((country) => {
             return (
               <div key={country.id}>
-                <Link to={"/home/" + country.id}>
+                <Link to={"/detail/" + country.id}>
                   <Card
                     name={country.name}
                     flag={country.flag}
