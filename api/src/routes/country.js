@@ -26,7 +26,7 @@ router.get("/", async function (req, res) {
     await getApiInfo() :
     await getDbInfo() 
 if ( name ) {
-    const countryName = countries.filter(n => n.id.toLowerCase().includes(name.toLowerCase())); // siempre va a comparar los valores en minuscula, sino la busqueda que se realice puede ser erronea
+    const countryName = countries.filter(n => n.name.toLowerCase().includes(name.toLowerCase())); // siempre va a comparar los valores en minuscula, sino la busqueda que se realice puede ser erronea
     countryName.length ? 
     res.status(200).send(countryName) :
     res.status(404).send('No country been found')

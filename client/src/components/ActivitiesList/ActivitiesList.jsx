@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getActivities } from '../../redux/actions'
 import NavBar from '../NavBar/NavBar'
 import Activity from '../Activity/Activity'
-// import './ActivitiesList.css'
+import './ActivitiesList.css'
 
 export default function ActivitiesList () {
     const activities = useSelector((state) => state.activities)
