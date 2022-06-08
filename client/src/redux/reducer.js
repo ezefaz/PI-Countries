@@ -27,18 +27,9 @@ function rootReducer (state = initialState, action) {
             }
             case FILTER_BY_ACTIVITIES:
                 return { 
-                    ...state,
-                    countries: state.allCountries.filter((c) => { return c.activities.find((c) => { return c.name === action.payload})} ) 
+                ...state,
+                countries: state.allCountries.filter((c) => { return c.activities.find((c) => { return c.name === action.payload})} ) 
                 }
-                // const countryActs = state.allCountries
-                // const filterAct = countryActs.filter((c) => { return c.activities.find((c) => { return c.name === action.payload})} ) 
-
-                // if (action.payload) {
-                //     return {
-                //         ...state,
-                //         countries: filterAct
-                //     }
-                // }
                 case POST_ACTIVITIES:
                     return {
                         ...state

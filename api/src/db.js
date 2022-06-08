@@ -38,8 +38,7 @@ const { Activity } = sequelize.models;
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
-// aca estoy diciendo: mi tabla de countries, pertenece a muchas actividades de mi tabla de personajes, esto se reflejara en mi tabla intermedia.
-Country.belongsToMany(Activity, {through: 'activities_countries' }) //estoy creando y relacionando con la tabla intermedia llamada "activities-countries"
+Country.belongsToMany(Activity, {through: 'activities_countries' }) 
 Activity.belongsToMany(Country, {through: 'activities_countries' })
 
 

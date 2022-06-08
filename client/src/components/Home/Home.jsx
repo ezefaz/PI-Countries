@@ -11,7 +11,6 @@ import NavBar from '../NavBar/NavBar'
 export default function Home() {
     const dispatch = useDispatch();
     const activities = useSelector((state) => state.activities);
-    
     const countries = useSelector((state) => state.countries);
   
   // PAGINADO
@@ -42,7 +41,6 @@ export default function Home() {
     }
   
     function handleFilterActivity(e) {
-      e.preventDefault()
       dispatch(filterByActivities(e.target.value));
       setCurrentPage(1);
     }
@@ -95,8 +93,8 @@ export default function Home() {
   
           <select className='filterAndOrder' onChange={(e) => handleFilterActivity(e)}>
             <option value="todos">Activities</option>
-            {activities.map((v) => (
-              <option value={v.name}>{v.name}</option>
+            {activities?.length && activities.map((v, index) => (
+              <option key={index} value={v.name}>{v.name}</option>
             ))}
           </select>
   

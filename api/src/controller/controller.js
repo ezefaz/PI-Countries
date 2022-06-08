@@ -21,7 +21,7 @@ const getApiInfo = async () => {
     return result;
 }
 const getDbInfo = async() => { 
-    return await Country.findAll({ //findAll lo utilizo para traer info de la base de datos.
+    return await Country.findAll({ 
         include: {
             model: Activity,
             attributes: ['name', 'difficulty', 'duration', 'season'],

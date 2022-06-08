@@ -22,8 +22,8 @@ export default function SearchBar () {
     return (
         <div className='form-sb'>
             <form onSubmit={onSubmit}>
-                <input className='input-country' type='text' placeholder='Insert country' onChange={onInputChange} value={search} />
-                <input className='input-btn' type='submit' value='' />
+                <input className='input-country' type='text' placeholder='Insert country...' onChange={onInputChange} value={search} />
+                <button className='input-btn' type='submit' value='' />
             </form>
         </div>
     )

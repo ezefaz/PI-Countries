@@ -7,28 +7,22 @@ import './ActivitiesList.css'
 
 export default function ActivitiesList () {
     const activities = useSelector((state) => state.activities)
-    const dispatch = useDispatch()
     // console.log(state.activities)
-
-useEffect (() => {
-    dispatch(getActivities())
-}, [dispatch])
 
     return (
         <div className='act-container'>
             <div>
                 <NavBar />
             </div>
-
             <div className='act-cards'> {
-               activities && activities?.map((a) => {
+               activities && activities?.map((ac) => {
                     return (
                     <div className='act-card-list'>
                         <Activity 
-                        name={a.name}
-                        duration={a.duration}
-                        season={a.season}
-                        difficulty={a.difficulty}
+                        name={ac.name}
+                        duration={ac.duration}
+                        season={ac.season}
+                        difficulty={ac.difficulty}
                         />
                         </div>
                     )

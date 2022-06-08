@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { postActivities, getActivities, getCountries } from '../../redux/actions'
+import { postActivities, getCountries } from '../../redux/actions'
 import { WINTER, SUMMER, SPRING, AUTUMN } from '../../Const/Const'
 import NavBar from '../NavBar/NavBar'
-import { Link } from 'react-router-dom'
 import "./ActivityCreate.css"
 
 function validate(input) {
@@ -38,8 +37,7 @@ export default function ActivityCreate () {
     })
 
     useEffect(() => {
-        
-        dispatch(getCountries());
+        dispatch(getCountries())
     }, [dispatch])
 
     function handleChange(e) {

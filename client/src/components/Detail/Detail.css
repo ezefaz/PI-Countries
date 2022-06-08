@@ -18,7 +18,12 @@
     flex-wrap: wrap;
     font-size: 60px;
   }
-  
+  .obj-image {
+    width: 50%;
+    height: 50%;
+    margin-top: 20px;
+
+  }
   .detail-container {
     width: 100%;
     display: flex;
@@ -38,24 +43,26 @@
     justify-content: start;
     align-items: center;
     margin: 5rem 0;
-    width: 40%;
+    width: 20%;
+    border-radius: 20px;
     height: 20%;
   }
   
   .obj-detail{
-      width: 50%;
-      margin: 2rem;
+      width: 60%;
+      margin: 2.5rem;
+      
   }
   .detail-obj{
       width: 100%;
       justify-content: flex-start;
       text-align: start;
-      margin-left: 5rem;
+      margin-left: 2rem;
   }
   
   .act-detail{
       background-color: whitesmoke;
-      width: 80%;
+      width: 70%;
       margin: 2rem 0;
       border: solid white;
   }
@@ -65,4 +72,23 @@
       justify-content: flex-start;
       text-align: start;
       margin: 0 5rem;
+  }
+  .btn-back{
+    display:block;
+    width:75px;
+    margin:auto;
+    margin-bottom:10px;
+    background-color: black;
+    border: transparent;
+    font-weight:bold;
+    color:white;
+    font-size: 22px;
+    width:75px;
+    padding:2px; 
+    cursor: pointer;
+  }
+
+  .btn-back:hover{
+    background-color: white;
+    color: black;
   }
