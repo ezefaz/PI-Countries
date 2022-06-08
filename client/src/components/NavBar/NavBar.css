@@ -1,5 +1,4 @@
 .nav-container{
- 
 
     background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     display: inline-flex;
@@ -12,7 +11,7 @@
 .nav-content{
     justify-content: space-around ;
     display: inline-flex;
-    width: 100%;
+    width: 800%;
 }
 
 
@@ -20,14 +19,14 @@
     color: white;
     text-decoration: none;
     font-size: 1rem ;
+    margin-top: 20px;
 }
-
 
 .nav-cn{
     color: #ffffff;
     text-align: center;
-    margin-left: 3%;
-    width: 25%;
+    margin-left: 2%;
+    width: 20%;
 }
 
 .countries{

@@ -59,7 +59,7 @@ export default function Home() {
       setOrden(`Ordenado ${e.target.value}`);
     }
   
-    useEffect(() => {
+    useEffect(() => {       // me va llenando el state cuando se monta el componente
       dispatch(getCountries());
       dispatch(getActivities());
     }, [dispatch]);
@@ -77,7 +77,7 @@ export default function Home() {
             }}
           >
             <option>Filter by alphabetical order</option>
-            <option value={ASCENDENT}> A-Z </option>
+            <option value={ASCENDENT}> A-Z </option>  // necesito que las option tengan un value para permitirme hacer la logica segun el value.
             <option value={DESCENDENT}> Z-A </option>
           </select>
   

@@ -21,7 +21,7 @@ return (
   <div>
   <NavBar/>
   </div>
-
+  
   <div className='detail-container'>{
       countriesDetail.length ?
           <div className='detail-content'>
@@ -49,9 +49,9 @@ return (
                   </div>
                   </div>
               )})}</div>
-                  <div className='btn'>
+                  <div className='btn2'>
      <Link className="link" to='/home'>
-         <button className='btn-back'>Back</button> 
+         <button className='btn2-back'>Back</button> 
      </Link>
                   </div>
           </div> : <div className='loading'>

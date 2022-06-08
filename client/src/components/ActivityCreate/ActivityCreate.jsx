@@ -61,11 +61,15 @@ export default function ActivityCreate () {
     }
 
     function handleSelect(e) {
+      if(Object.values(input.idCountry).includes(e.target.value)) {
+        alert('Country already selected')
+      } else {
         setInput({
             ...input,
             idCountry: [...input.idCountry, e.target.value]
         })
     }
+}
 
     function handleSubmit(e) {
         e.preventDefault()
