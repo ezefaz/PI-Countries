@@ -76,7 +76,7 @@ export default function Home() {
               handleSort(e);
             }}
           >
-            <option>Filter by alphabetical order</option>
+            <option selected disabled value=" ">Filter by alphabetical order</option>
             <option value={ASCENDENT}> A-Z </option>  // necesito que las option tengan un value para permitirme hacer la logica segun el value.
             <option value={DESCENDENT}> Z-A </option>
           </select>
@@ -86,20 +86,21 @@ export default function Home() {
               handleSort2(e);
             }}
           >
-            <option>Filter by population</option>
+            <option selected disabled value=" ">Filter by population</option>
             <option value={HIGHER_POPULATION}>Higher poblation</option>
             <option value={LOWER_POPULATION}>Lower poblation</option>
           </select>
   
           <select className='filterAndOrder' onChange={(e) => handleFilterActivity(e)}>
-            <option value="todos">Activities</option>
+            <option selected disabled value=" ">Activities</option>
+            <option value='All'>All</option>
             {activities?.length && activities.map((v, index) => (
               <option key={index} value={v.name}>{v.name}</option>
             ))}
           </select>
   
           <select className='filterAndOrder' onChange={(e) => handleFilterContinent(e)}>
-            <option>Continents</option>
+            <option selected disabled value=" ">Continents</option>
             <option value={ALL}>All</option>
             <option value={ALL_OF_AFRICA}>Africa</option>
             <option value={ALL_OF_ANTARCTICA}>Antarctica</option>
