@@ -15,9 +15,6 @@ export default function Home() {
   
   // PAGINADO
 
-  // Primero voy a armar varios estados locales.
-
-
     const [currentPage, setCurrentPage] = useState(1); // guardame en el estado local la pagina actual, que empieza en uno por que siempre voy a arrancar en la primer pagina
     const [countriesPerPage] = useState(9);           //seteo los countries por pagina, el readme dice que sean 9.
     const indexOfLastCountry = currentPage * countriesPerPage; // declaro una constante con el indice del ultimo pais. Mi numero de pagina (1) * los paises por pagina (9)
@@ -26,7 +23,7 @@ export default function Home() {
         
     const [, setOrden] = useState("");
   
-    const paginate = (pageNumber) => {  // esta constante paginado nos va a ayudar al renderizado
+    const paginate = (pageNumber) => { 
       setCurrentPage(pageNumber);
     };
   
@@ -77,7 +74,7 @@ export default function Home() {
             }}
           >
             <option selected disabled value=" ">Filter by alphabetical order</option>
-            <option value={ASCENDENT}> A-Z </option>  // necesito que las option tengan un value para permitirme hacer la logica segun el value.
+            <option value={ASCENDENT}> A-Z </option>  
             <option value={DESCENDENT}> Z-A </option>
           </select>
   
@@ -115,7 +112,7 @@ export default function Home() {
         <Paginate //le voy a pasar las props que necesita el componente para renderizarse.
           countriesPerPage={countriesPerPage} // le paso el estado de paises por pagina
           countries={countries.length} // a los paises le paso el .length, ya que necesito un valor numerico.
-          paginate={paginate} // como paginado le voy a pasar la constante del paginado
+          paginate={paginate} 
         />
   
         <div className='cardsBox'>

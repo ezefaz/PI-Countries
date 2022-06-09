@@ -25,7 +25,7 @@ return (
   <div className='detail-container'>{
       countriesDetail.length ?
           <div className='detail-content'>
-              <img className='obj-image' src={countriesDetail[0].flag} alt='Image not found'/>
+              <img className='obj-image' src={countriesDetail[0].flag} alt=''/>
               <h1 className='obj-detail'>{countriesDetail[0].name}</h1>
               <div className='detail-obj'>
               <h2>ID: {countriesDetail[0].id}</h2>

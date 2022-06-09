@@ -19,8 +19,8 @@ function rootReducer (state = initialState, action) {
             }
             case FILTER_BY_CONTINENT: 
             const everyCountry = state.allCountries
-            const filterCont = action.payload === 'All' ?
-            everyCountry: everyCountry.filter((c) => c.continent === action.payload) // // por payload le pasamos cada uno de los nombres que llega en el back, que estan en el componente Home. Entonces si coinciden, me devuelve el estado concatenado y que en mi estado "Countries" suceda el filtro.
+            const filterCont = action.payload === 'All' ? everyCountry 
+            : everyCountry.filter((c) => c.continent === action.payload) // // por payload le pasamos cada uno de los nombres que llega en el back, que estan en el componente Home. Entonces si coinciden, me devuelve el estado concatenado y que en mi estado "Countries" suceda el filtro.
             return {
                 ...state,
                 countries: filterCont

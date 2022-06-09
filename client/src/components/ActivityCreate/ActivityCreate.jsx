@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { postActivities, getCountries } from '../../redux/actions'
+import { postActivities, getCountries, getActivities } from '../../redux/actions'
 import { WINTER, SUMMER, SPRING, AUTUMN } from '../../Const/Const'
 import NavBar from '../NavBar/NavBar'
 import "./ActivityCreate.css"
@@ -38,6 +38,7 @@ export default function ActivityCreate () {
 
     useEffect(() => {
         dispatch(getCountries())
+        dispatch(getActivities())
     }, [dispatch])
 
     function handleChange(e) {
@@ -90,9 +91,6 @@ export default function ActivityCreate () {
     return (
         <div className="">
           <NavBar />
-          {/* <div>
-            <Link to='/home'><button>Return</button></Link>
-          </div> */}
           <div className="act-card-container">
             <div className="act-card">
               <div className="act-title">

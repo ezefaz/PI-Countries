@@ -5,9 +5,9 @@ import Activity from '../Activity/Activity'
 import { Link } from 'react-router-dom'
 import './ActivitiesList.css'
 
+
 export default function ActivitiesList () {
     const activities = useSelector((state) => state.activities)
-    // console.log(state.activities)
 
     return (
         <div className='act-container'>
@@ -15,7 +15,7 @@ export default function ActivitiesList () {
                 <NavBar />
             </div>
             <div className='act-cards'> 
-            {activities? activities.map((ac) => 
+            {activities.length? activities.map((ac) => 
                     <div className='act-card-list'>
                        <Activity 
                        name={ac.name}

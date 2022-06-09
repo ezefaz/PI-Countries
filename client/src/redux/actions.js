@@ -80,11 +80,9 @@ export function filterByActivities (payload) {
 }
 
 export function postActivities (payload) {
-    return async function (dispatch) {
-        await axios.post('http://localhost:3001/activity', payload)
-        return dispatch ({
-            type: POST_ACTIVITIES
-        })
+    return async function(dispatch){
+        const activity = axios.post('http://localhost:3001/activity', payload)
+        return activity
     }
 }
 
