@@ -8,8 +8,10 @@ import "./ActivityCreate.css"
 
 function validate(input) {
     let errors = {}
+    const nameRegular = /^[a-zA-ZÀ-ÿ\s]{4,40}$/
     if (!input.name) {
         errors.name = 'Complete this field'
+    } else if (!nameRegular.test(input.name)){ 
     } else if (!input.duration) {
         errors.duration = 'Complete this field'
     } else if (!input.season) {
@@ -27,7 +29,6 @@ export default function ActivityCreate () {
     const history = useHistory()
     const countries = useSelector((state) => state.countries);
     const [errors, setErrors] = useState({})
-
     const [input, setInput] = useState({
         name: "",
         duration: "",
@@ -89,12 +90,15 @@ export default function ActivityCreate () {
         history.push('/home')
     }
     return (
-        <div className="">
+      <div>
+        <div>
           <NavBar />
+        </div>
+      
           <div className="act-card-container">
             <div className="act-card">
               <div className="act-title">
-              </div>  
+          </div>  
               <form className="form-act" onSubmit={handleSubmit}>
                 <span className='title-create-act'> Create an activity</span>
                 <div className="input-act">
@@ -102,27 +106,26 @@ export default function ActivityCreate () {
                   <input
                     className="i"
                     type="text"
-                    placeholder="Put the activity name..."
+                    placeholder="Enter the activity name..."
                     value={input.name}
                     name="name"
                     onChange={handleChange}
                   />
-                  {errors.name                              // si esta mi estado errores, entonces renderizame un parrafo con el error
-                  && <p className="e">{errors.name}</p>}  
+                  {errors.name && <p className="e">{errors.name}</p>}  
                 </div>
-                <div className="inputActivities">
+                <div className="input-act">
                   <label></label>
                   <input
                     className="i"
                     type="text"
                     value={input.duration}
                     name="duration"
-                    placeholder="Put the duration..."
+                    placeholder="Enter the duration..."
                     onChange={handleChange}
                   />
                   {errors.duration && <p className="e">{errors.duration}</p>}
                 </div>
-                <div className="inputActivities">
+                <div className="input-act">
                   <label>Difficulty</label>
                   <input
                     className="i"
@@ -176,6 +179,7 @@ export default function ActivityCreate () {
               </form>
             </div>
           </div>
-        </div>
+          </div>
+          
       )
 }

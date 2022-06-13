@@ -1,19 +1,18 @@
 import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { getCountriesDetails, restartDetail } from '../../redux/actions'
 import NavBar from '../NavBar/NavBar'
 import './Detail.css'
 
-
-
 export default function Detail(props) {
 const dispatch = useDispatch()
+const params = useParams()
 const countriesDetail = useSelector((state) => state.detail)
 
 useEffect(() => {
+  dispatch(getCountriesDetails(props.match.params.id)) 
   dispatch(restartDetail())
-  dispatch(getCountriesDetails(props.match.params.id)) // de esta forma accedo al id  
 }, [dispatch, props.match.params.id])
 
 return (
@@ -47,18 +46,18 @@ return (
                     <h3>Duration: {el.duration}</h3>
                     <h3>Season: {el.season}</h3>
                   </div>
-                  </div>
-              )})}</div>
+                </div>)})}
+              </div>
                   <div className='btn2'>
      <Link className="link" to='/home'>
          <button className='btn2-back'>Back</button> 
      </Link>
-                  </div>
-          </div> : <div className='loading'>
-            <p> Loading... </p>
             </div>
-            
-  }</div>
-</div>
-);
+        </div> 
+        : 
+        <div>
+          <p className='loading'>Loading...</p>
+        </div>}
+      </div>
+  </div>);
 };

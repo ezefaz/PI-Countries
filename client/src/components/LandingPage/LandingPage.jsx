@@ -1,15 +1,23 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Button } from '../Button/button'
 import './LandingPage.css'
+
 
 export default function LandingPage() {
     return (
-        <div className="landingPage">
-            <h1 className= 'landingTitle'>COUNTRIES APP</h1>
-            <h2 clasName = 'landingSubtitle'>You can search for any country in the world!</h2>
-            <Link to = '/home'> 
-                <button className='btn'><span></span>Start experience</button>
-            </Link>
-        </div>
-    )
+<div className='hero-container'>
+      <video src='/videos/video-2.mp4' autoPlay loop muted />
+      <h1>COUNTRIES APP</h1>
+      <p>What are you waiting for?</p>
+      <div className='hero-btns'> 
+        <Button
+          className='btns'
+          buttonStyle='btn--primary'
+          buttonSize='btn--large'
+        >
+          START EXPERIENCE
+        </Button>
+      </div>
+    </div>
+  );
 }

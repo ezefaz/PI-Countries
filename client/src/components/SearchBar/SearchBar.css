@@ -11,7 +11,7 @@
     align-content: center;
     width: 20%;
     margin-top: 13px;
-    justify-content: start;
+    justify-content: flex-end;
     flex-direction: column;
     flex-wrap: wrap;
   }
@@ -36,10 +36,10 @@
   ::placeholder {
     color: white
   }
-  
+
   .input-btn {
     background-color: transparent;
-    background-image: url("../../img/earth.svg");
+    /* background-image: url("../../img/earth.svg"); */
     background-position: center;
     background-repeat: no-repeat;
     background-size: 80% 80%;

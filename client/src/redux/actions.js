@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { RESET, ORDER_BY_POPULATION, FILTER_BY_ACTIVITIES, FILTER_BY_CONTINENT, GET_COUNTRIES, ORDER_BY_NAME, SEARCH_COUNTRIES, GET_ACTIVITIES, POST_ACTIVITIES, DETAIL } from '../Const/Const'
+import { RESET, ORDER_BY_POPULATION, FILTER_BY_ACTIVITIES, FILTER_BY_CONTINENT, GET_COUNTRIES, ORDER_BY_NAME, SEARCH_COUNTRIES, GET_ACTIVITIES, DETAIL } from '../Const/Const'
 
 export function getCountries () {
     return async function (dispatch) {
@@ -66,7 +66,7 @@ export function getActivities() {
                 payload: json.data
             })
         } catch(err) {
-            alert('No activities available')
+            // alert('No activities available')
             console.log(err)
         }
     }

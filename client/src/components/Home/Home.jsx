@@ -5,8 +5,9 @@ import { getCountries, orderByName, orderByPopulation, getActivities, getContine
 import { LOWER_POPULATION, HIGHER_POPULATION, ALL, ALL_OF_AFRICA, ALL_OF_ANTARCTICA, ALL_OF_ASIA, ALL_OF_S_AMERICA, ALL_OF_EUROPE, ALL_OF_N_AMERICA, ALL_OF_OCEANIA, ASCENDENT, DESCENDENT} from '../../Const/Const'
 import Card from '../Card/Card'
 import Paginate from '../Paginate/Paginate'
-import './Home.css'
 import NavBar from '../NavBar/NavBar'
+import SearchBar from '../SearchBar/SearchBar'
+import './Home.css'
 
 export default function Home() {
     const dispatch = useDispatch();
@@ -15,11 +16,11 @@ export default function Home() {
   
   // PAGINADO
 
-    const [currentPage, setCurrentPage] = useState(1); // guardame en el estado local la pagina actual, que empieza en uno por que siempre voy a arrancar en la primer pagina
-    const [countriesPerPage] = useState(9);           //seteo los countries por pagina, el readme dice que sean 9.
-    const indexOfLastCountry = currentPage * countriesPerPage; // declaro una constante con el indice del ultimo pais. Mi numero de pagina (1) * los paises por pagina (9)
-    const indexOfFirstCountry = indexOfLastCountry - countriesPerPage; // esto daria 0. (9 - 9)
-    const currentCountry = countries.slice(indexOfFirstCountry, indexOfLastCountry); // esta constante va a guardar los paises a renderizar dependiendo de la pagina. Entonces, a todos los paises, hace un slice que agarra un arreglo y toma una porción, dependiendo de lo que le pase por parametro. En este caso el indice del primer y ultimo personaje. Esto va a ir modificandose dependiendo en la pagina en la que este
+    const [currentPage, setCurrentPage] = useState(1); 
+    const [countriesPerPage] = useState(9);           
+    const indexOfLastCountry = currentPage * countriesPerPage;
+    const indexOfFirstCountry = indexOfLastCountry - countriesPerPage; 
+    const currentCountry = countries.slice(indexOfFirstCountry, indexOfLastCountry); 
         
     const [, setOrden] = useState("");
   
@@ -46,7 +47,7 @@ export default function Home() {
       e.preventDefault();
       dispatch(orderByName(e.target.value));
       setCurrentPage(1);
-      setOrden(`Ordenado ${e.target.value}`); // sin este estado no me funcionaria.
+      setOrden(`Ordenado ${e.target.value}`); 
     }
   
     function handleSort2(e) {
@@ -56,16 +57,21 @@ export default function Home() {
       setOrden(`Ordenado ${e.target.value}`);
     }
   
-    useEffect(() => {       // me va llenando el state cuando se monta el componente
+    useEffect(() => {      
       dispatch(getCountries());
       dispatch(getActivities());
     }, [dispatch]);
+
+
+
+
   
     return (
       <div className="cards-container">
         <div>
           <NavBar />
         </div>
+        <SearchBar paginate={setCurrentPage} />
         <div className="filterContainer">
         <button id='b1' className='filterAndOrder' onClick={(e)=>refreshCountries(e)}>Refresh</button>
           <select className='filterAndOrder'
@@ -109,11 +115,7 @@ export default function Home() {
           </select>
         </div>
   
-        <Paginate //le voy a pasar las props que necesita el componente para renderizarse.
-          countriesPerPage={countriesPerPage} // le paso el estado de paises por pagina
-          countries={countries.length} // a los paises le paso el .length, ya que necesito un valor numerico.
-          paginate={paginate} 
-        />
+        <Paginate countriesPerPage={countriesPerPage} countries={countries.length} paginate={paginate} />
   
         <div className='cardsBox'>
           {currentCountry?.map((country) => {
