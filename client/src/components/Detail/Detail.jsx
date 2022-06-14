@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import { Link, useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { getCountriesDetails, restartDetail } from '../../redux/actions'
 import NavBar from '../NavBar/NavBar'
 import './Detail.css'
 
 export default function Detail(props) {
 const dispatch = useDispatch()
-const params = useParams()
 const countriesDetail = useSelector((state) => state.detail)
 
 useEffect(() => {
