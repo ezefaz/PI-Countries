@@ -1,5 +1,5 @@
-import React from 'react'
-import '../Paginate/Paginate.css'
+import React from 'react';
+import '../Paginate/Paginate.css';
 
 export default function Paginate({countriesPerPage, countries, paginate}) {
     const pageNumbers = [] // por el momento no tengo pageNumbers

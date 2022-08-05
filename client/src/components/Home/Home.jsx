@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+
 import { getCountries, orderByName, orderByPopulation, getActivities, getContinents, filterByActivities } from '../../redux/actions'
 import { LOWER_POPULATION, HIGHER_POPULATION, ALL, ALL_OF_AFRICA, ALL_OF_ANTARCTICA, ALL_OF_ASIA, ALL_OF_S_AMERICA, ALL_OF_EUROPE, ALL_OF_N_AMERICA, ALL_OF_OCEANIA, ASCENDENT, DESCENDENT} from '../../Const/Const'
+
 import Card from '../Card/Card'
 import Paginate from '../Paginate/Paginate'
-import NavBar from '../NavBar/NavBar'
-import SearchBar from '../SearchBar/SearchBar'
-import './Home.css'
+import Nav from '../Nav/Nav';
+import { Container, FilterContainer, CardsBox, Filtering, Refresh } from './styles';
+
 
 export default function Home() {
     const dispatch = useDispatch();
     const activities = useSelector((state) => state.activities);
     const countries = useSelector((state) => state.countries);
   
-  // PAGINADO
+    // PAGINADO
 
     const [currentPage, setCurrentPage] = useState(1); 
     const [countriesPerPage] = useState(9);           
@@ -61,20 +63,13 @@ export default function Home() {
       dispatch(getCountries());
       dispatch(getActivities());
     }, [dispatch]);
-
-
-
-
   
     return (
-      <div className="cards-container">
-        <div>
-          <NavBar />
-        </div>
-        <SearchBar paginate={setCurrentPage} />
-        <div className="filterContainer">
-        <button id='b1' className='filterAndOrder' onClick={(e)=>refreshCountries(e)}>Refresh</button>
-          <select className='filterAndOrder'
+      <Container>
+        <Nav paginate={setCurrentPage}/>
+        <FilterContainer>
+        <Refresh className='filterAndOrder' onClick={(e)=>refreshCountries(e)}>Refresh</Refresh>
+          <Filtering
             onChange={(e) => {
               handleSort(e);
             }}
@@ -82,9 +77,9 @@ export default function Home() {
             <option selected disabled value=" ">Filter by alphabetical order</option>
             <option value={ASCENDENT}> A-Z </option>  
             <option value={DESCENDENT}> Z-A </option>
-          </select>
-  
-          <select className='filterAndOrder'
+          </Filtering>
+
+          <Filtering
             onChange={(e) => {
               handleSort2(e);
             }}
@@ -92,17 +87,17 @@ export default function Home() {
             <option selected disabled value=" ">Filter by population</option>
             <option value={HIGHER_POPULATION}>Higher poblation</option>
             <option value={LOWER_POPULATION}>Lower poblation</option>
-          </select>
+          </Filtering>
   
-          <select className='filterAndOrder' onChange={(e) => handleFilterActivity(e)}>
+          <Filtering onChange={(e) => handleFilterActivity(e)}>
             <option selected disabled value=" ">Activities</option>
             <option value='All'>All</option>
             {activities?.length && activities.map((v, index) => (
               <option key={index} value={v.name}>{v.name}</option>
             ))}
-          </select>
+          </Filtering>
   
-          <select className='filterAndOrder' onChange={(e) => handleFilterContinent(e)}>
+          <Filtering onChange={(e) => handleFilterContinent(e)}>
             <option selected disabled value=" ">Continents</option>
             <option value={ALL}>All</option>
             <option value={ALL_OF_AFRICA}>Africa</option>
@@ -112,12 +107,11 @@ export default function Home() {
             <option value={ALL_OF_ASIA}>Asia</option>
             <option value={ALL_OF_EUROPE}>Europe</option>
             <option value={ALL_OF_OCEANIA}>Oceania</option>
-          </select>
-        </div>
-  
+          </Filtering>
+        </FilterContainer>
         <Paginate countriesPerPage={countriesPerPage} countries={countries.length} paginate={paginate} />
-  
-        <div className='cardsBox'>
+
+        <CardsBox>
           {currentCountry?.map((country) => {
             return (
               <div key={country.id}>
@@ -133,7 +127,7 @@ export default function Home() {
               </div>
             );
           })}
-        </div>
-      </div>
+        </CardsBox>
+      </Container>
     );
   }

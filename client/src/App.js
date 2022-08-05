@@ -1,4 +1,4 @@
-import './App.css';
+import React, { useState, useEffect } from 'react';    
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Home from './components/Home/Home'
 import LandingPage from './components/LandingPage/LandingPage'
@@ -12,7 +12,7 @@ function App() {
       <div className="App"> 
         <Switch> 
           <Route exact path = '/' component = {LandingPage} />
-          <Route path ='/home' component = {Home} />
+          <Route path ='/home' exact component = {Home} />
           <Route path ='/activity' component = {ActivityCreate} />
           <Route path = '/activities' component = {ActivitiesList} />
           <Route path = '/detail/:id' component = {Detail} />
