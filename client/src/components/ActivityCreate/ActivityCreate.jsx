@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { postActivities, getCountries, getActivities } from '../../redux/actions'
 import { WINTER, SUMMER, SPRING, AUTUMN } from '../../Const/Const'
-import NavBar from '../NavBar/NavBar'
+import Nav from '../Nav/Nav';
 import "./ActivityCreate.css"
 
 function validate(input) {
@@ -92,7 +92,7 @@ export default function ActivityCreate () {
     return (
       <div>
         <div>
-          <NavBar />
+          <Nav />
         </div>
       
           <div className="act-card-container">

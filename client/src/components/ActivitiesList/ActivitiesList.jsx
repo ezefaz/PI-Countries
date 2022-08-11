@@ -1,9 +1,9 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import NavBar from '../NavBar/NavBar'
 import Activity from '../Activity/Activity'
 import { Link } from 'react-router-dom'
 import './ActivitiesList.css'
+import Nav from '../Nav/Nav';
 
 
 export default function ActivitiesList () {
@@ -12,7 +12,7 @@ export default function ActivitiesList () {
     return (
         <div className='act-container'>
             <div>
-                <NavBar />
+                <Nav />
             </div>
             <div className='act-cards'> 
             {activities.length? activities.map((ac) => 

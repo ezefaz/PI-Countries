@@ -19,10 +19,11 @@ export const FilterContainer = styled.div`
 `;
 
 export const CardsBox = styled.div` 
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem;
+    
+
 `;
 
 export const Filtering = styled.select`
@@ -50,3 +51,4 @@ export const Refresh = styled.button`
     font-size: large;
     cursor: pointer;
 `
+  
