@@ -13,8 +13,9 @@ export const SubContainer = styled.div`
 
 export const FilterContainer = styled.div` 
     display: inline-flex;
-    width: 90%;
-    padding: 1rem 4rem;
+    width: 100%;
+    justify-content: center;
+    gap: 1rem;
 `;
 
 export const CardsBox = styled.div` 

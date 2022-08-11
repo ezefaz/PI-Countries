@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { RESET, ORDER_BY_POPULATION, FILTER_BY_ACTIVITIES, FILTER_BY_CONTINENT, GET_COUNTRIES, ORDER_BY_NAME, SEARCH_COUNTRIES, GET_ACTIVITIES, DETAIL } from '../Const/Const'
+import { RESET, ORDER_BY_POPULATION, FILTER_BY_ACTIVITIES, FILTER_BY_CONTINENT, GET_COUNTRIES, ORDER_BY_NAME, SEARCH_COUNTRIES, GET_ACTIVITIES, DETAIL, DELETE } from '../Const/Const'
 
 export function getCountries () {
     return async function (dispatch) {
@@ -69,6 +69,17 @@ export function getActivities() {
             // alert('No activities available')
             console.log(err)
         }
+    }
+};
+
+export const deleteActivity = (id) => async (dispatch) => {
+    try {
+        await axios.deletePost(id);
+
+        dispatch({ type: 'DELETE', payload: id });
+
+    } catch (error) {
+        console.log(error);
     }
 }
 

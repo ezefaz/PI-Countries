@@ -3,6 +3,7 @@ export const SEARCH_COUNTRIES = 'SEARCH_COUNTRIES'
 export const GET_ACTIVITIES = 'GET_ACTIVITIES'
 export const POST_ACTIVITIES = 'POST_ACTIVITIES'
 export const DETAIL ='DETAIL'
+export const DELETE ='DELETE'
 
 export const ORDER_BY_NAME = 'ORDER_BY_NAME'
 export const DESCENDENT= 'DESCENDENT'
