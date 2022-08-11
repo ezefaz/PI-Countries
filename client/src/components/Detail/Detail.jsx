@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { Link } from 'react-router-dom'
 import { getCountriesDetails, restartDetail } from '../../redux/actions'
-import NavBar from '../NavBar/NavBar'
+import Nav from '../Nav/Nav';
 import './Detail.css'
 
 export default function Detail(props) {
@@ -16,9 +16,7 @@ useEffect(() => {
 
 return (
 <div key={countriesDetail.id} className='detailE'>
-  <div>
-  <NavBar/>
-  </div>
+  <Nav/>
   
   <div className='detail-container'>{
       countriesDetail.length ?

@@ -90,6 +90,10 @@ export default function Home() {
                     continent={country.continent}
                     capital={country.capital}
                     population={country.population}
+                    subregion={country.subregion}
+                    area={country.area}
+                    id={country.id}
+                    activities={country.activities}
                     />
               </div>
             );
