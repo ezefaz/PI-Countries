@@ -1,11 +1,10 @@
 
 .act-card-container {
     display: flex;
-    background: url('../../countries-wallpaper-image.jpg') center center/cover no-repeat;
-    height: 100vh;
+    height: fit-content;
     align-items: center;
     justify-content: center;
-    margin: 10 0 0 0;
+    margin: 2rem ;
   }
   
   .act-card {
@@ -65,7 +64,6 @@
       color: #fff;
       padding:10px 20px;
       text-transform:uppercase;
-      margin-top:50px;
       border-radius:5px;
       cursor:pointer;
       position:relative;

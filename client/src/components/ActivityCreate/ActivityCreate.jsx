@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { postActivities, getCountries, getActivities } from '../../redux/actions'
 import { WINTER, SUMMER, SPRING, AUTUMN } from '../../Const/Const'
+
+
 import Nav from '../Nav/Nav';
 import "./ActivityCreate.css"
 
@@ -25,17 +27,13 @@ function validate(input) {
 }
 
 export default function ActivityCreate () {
+
+
     const dispatch = useDispatch()
     const history = useHistory()
     const countries = useSelector((state) => state.countries);
     const [errors, setErrors] = useState({})
-    const [input, setInput] = useState({
-        name: "",
-        duration: "",
-        season:"",
-        difficulty:"",
-        idCountry: [],
-    })
+    const [input, setInput] = useState({name: "", duration: "", season:"", difficulty:"", idCountry: [] })
 
     useEffect(() => {
         dispatch(getCountries())
@@ -156,7 +154,10 @@ export default function ActivityCreate () {
                 {errors.idCountry && <p className="e">{errors.idCountry}</p>}
     
                 <div>
-                  <select  className="All-countries" onChange={(e) => handleSelect(e)}>
+                  <select
+                  className="i"
+                  onChange={(e) => handleSelect(e)}
+                  >
                     Countries
                     {countries && countries.map(e => (
                      <option value={e.id} name="countries" key={e.id} >{e.name}</option>

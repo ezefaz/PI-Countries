@@ -5,66 +5,51 @@ export function getCountries () {
     return async function (dispatch) {
         try {
             var json = await axios.get('/countries')
-            return dispatch({
-                type: GET_COUNTRIES,
-                payload: json.data
-            });
+            return dispatch({type: GET_COUNTRIES, payload: json.data}) ;
         } catch(err) {
             console.log(err)
         }
     }
-}
+};
 
 export function getCountriesDetails(id) {
     return async function (dispatch) {
         try {
             var json = await axios (`/countries/${id}`)
-                return dispatch({
-                    type: DETAIL,
-                    payload: json.data
-                })
+                return dispatch({type: DETAIL, payload: json.data})
         } catch(err) {
             console.log('Wrong ID')
         }
     } 
-}
+};
 
 export function searchCountries(name) {
     return async function (dispatch) {
         try {
             let json = await axios (`/countries?name=${name}`)
-                return dispatch({
-                    type: SEARCH_COUNTRIES,
-                    payload: json.data
-                })
+                return dispatch({type: SEARCH_COUNTRIES, payload: json.data})
         } catch(err) {
             alert('Country does not exist')
             console.log(err)
         }
     }
-}
+};
 
 export function getContinents (payload) {
     return async function(dispatch) {
         try {
-            return dispatch({
-                type: FILTER_BY_CONTINENT,
-                payload
-            })
+            return dispatch({type: FILTER_BY_CONTINENT, payload})
         } catch(err) {
             console.log(err)
         }
     }
-}
+};
 
 export function getActivities() {
     return async function (dispatch) {
         try {
             let json = await axios('/activity')
-            return dispatch({
-                type: GET_ACTIVITIES,
-                payload: json.data
-            })
+            return dispatch({type: GET_ACTIVITIES, payload: json.data})
         } catch(err) {
             // alert('No activities available')
             console.log(err)
