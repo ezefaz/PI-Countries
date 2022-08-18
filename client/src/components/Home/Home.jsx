@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-import Grid from '@mui/material/Grid'
 
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
@@ -17,12 +15,14 @@ import Nav from '../Nav/Nav';
 import { Container, FilterContainer, CardsBox, CardsContainer } from './styles';
 import Filters from './Filters/Filters';
 import Refreshing from './Filters/Refreshing';
+import Loading from '../Loading/Loading';
 
 
 export default function Home() {
     const dispatch = useDispatch();
     const activities = useSelector((state) => state.activities);
     const countries = useSelector((state) => state.countries);
+    const [loading, setloading] = useState(false);
   
     // PAGINADO
 
@@ -54,7 +54,13 @@ export default function Home() {
       dispatch(getCountries());
       dispatch(getActivities());
     }, [dispatch]);
-  
+
+    useEffect( () => {
+      setTimeout(() => {
+          setloading(true)
+      }, 1500)
+  });
+
     return (
       <Container>
         <Nav paginate={setCurrentPage}/>
@@ -80,7 +86,10 @@ export default function Home() {
         </FilterContainer>
         <Paginate countriesPerPage={countriesPerPage} countries={countries.length} paginate={paginate} />
         <CardsBox> 
-        {currentCountry?.map((country) => {
+        {
+        loading === false ? 
+        <Loading /> : 
+        currentCountry?.map((country) => {
           return ( 
             <div key={country.id}
             >
@@ -96,8 +105,9 @@ export default function Home() {
                     activities={country.activities}
                     />
               </div>
-            );
-          })}
+              
+            )
+          } ) }
           </CardsBox>
       </Container>
     );

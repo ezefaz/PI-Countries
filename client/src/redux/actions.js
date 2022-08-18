@@ -1,5 +1,7 @@
-import axios from 'axios'
-import { RESET, ORDER_BY_POPULATION, FILTER_BY_ACTIVITIES, FILTER_BY_CONTINENT, GET_COUNTRIES, ORDER_BY_NAME, SEARCH_COUNTRIES, GET_ACTIVITIES, DETAIL, DELETE } from '../Const/Const'
+import axios from 'axios';
+import { RESET, ORDER_BY_POPULATION, FILTER_BY_ACTIVITIES, FILTER_BY_CONTINENT, GET_COUNTRIES, ORDER_BY_NAME, SEARCH_COUNTRIES, GET_ACTIVITIES, DETAIL, DELETE } from '../Const/Const';
+import Swal from 'sweetalert2';
+
 
 export function getCountries () {
     return async function (dispatch) {
@@ -29,8 +31,13 @@ export function searchCountries(name) {
             let json = await axios (`/countries?name=${name}`)
                 return dispatch({type: SEARCH_COUNTRIES, payload: json.data})
         } catch(err) {
-            alert('Country does not exist')
-            console.log(err)
+           Swal.fire({
+            text: 'Country not found',
+            icon: "error",
+            buttons: false,
+            timer: '1500'
+           })
+           console.log(err);
         }
     }
 };
@@ -51,21 +58,15 @@ export function getActivities() {
             let json = await axios('/activity')
             return dispatch({type: GET_ACTIVITIES, payload: json.data})
         } catch(err) {
-            // alert('No activities available')
             console.log(err)
         }
     }
 };
 
-export const deleteActivity = (id) => async (dispatch) => {
-    try {
-        await axios.deletePost(id);
+export const deleteActivity = (payload) => async (dispatch) => {
+    return axios.delete(`/activity/delete/` + payload)
+    .then(res => dispatch ({ type: DELETE }))
 
-        dispatch({ type: 'DELETE', payload: id });
-
-    } catch (error) {
-        console.log(error);
-    }
 }
 
 export function filterByActivities (payload) {

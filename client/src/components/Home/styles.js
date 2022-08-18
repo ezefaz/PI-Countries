@@ -22,7 +22,13 @@ export const CardsBox = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 1rem;
-    
+    @media screen and (max-width: 920px) {
+        display: flex;
+        margin-top: 30rem;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 
 `;
 

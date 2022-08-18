@@ -1,0 +1,71 @@
+.pagination_ul {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(3px);
+    border-radius: 2px;
+    margin: 3rem 0;
+}
+
+.pagination_ul li{
+    list-style-type: none;
+    display: inline-block;
+}
+.pagination_ul li button {
+    position: relative;
+    padding: 20px 25px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: none;
+    text-decoration: none;
+    color: #fff;
+    font-size: 2vh;
+    font-weight: 500;
+}
+.pagination_ul li button:hover{
+    cursor: pointer;
+}
+.container .pagination_ul li button:hover, 
+.container .pagination_ul li.active button {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+@media screen and (max-width:700px) {
+    .pagination_ul {
+        margin: auto;
+        width: 90%;
+        flex-wrap: wrap;
+        border-radius: 2px;
+        backdrop-filter: none;
+        background: none;
+        box-shadow: none;
+    }
+    .pagination_ul ul{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .pagination_ul li{
+        margin: auto;
+        list-style-type: none;
+        display:inline-block;
+        padding: 10px;
+    }
+    .pagination_ul li button {
+        text-align: center;
+        background: none;
+        position: relative;
+        width: 25px;
+        padding: 20px;
+        margin: 0;
+        border: none;
+        text-decoration: none;
+        color: #fff;
+        font-size: 2vh;
+        font-weight: 500;
+    }
+    .container .pagination_ul li button:hover, 
+.container .pagination_ul li.active button {
+    background: none;
+}
+}

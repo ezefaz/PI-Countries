@@ -44,11 +44,9 @@ function rootReducer (state = initialState, action) {
                         activities: action.payload
                     }
                     case DELETE: 
-                    const deletedActivities = state.activities;
-                    const deleteAct = deletedActivities.filter((act) => act.id !== action.payload);
                     return {
                         ...state,
-                        activities: deleteAct
+                        activities: state.activities.filter(e => e.id !== action.payload)
                     }
                     case DETAIL:
                         return {

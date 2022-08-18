@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import Swal from 'sweetalert2';
+
 import { postActivities, getCountries, getActivities } from '../../redux/actions'
-import { WINTER, SUMMER, SPRING, AUTUMN } from '../../Const/Const'
+import { WINTER, SUMMER, SPRING, AUTUMN } from '../../Const/Const';
 
 
 import Nav from '../Nav/Nav';
@@ -10,18 +12,30 @@ import "./ActivityCreate.css"
 
 function validate(input) {
     let errors = {}
+
     const nameRegular = /^[a-zA-ZÀ-ÿ\s]{4,40}$/
+    const urlRegular = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|png)/g
+
     if (!input.name) {
-        errors.name = 'Complete this field'
-    } else if (!nameRegular.test(input.name)){ 
+        errors.name = 'Name is required';
+
+    } else if (!nameRegular.test(input.name)) {
+        errors.name = 'Insert a valid name'; 
+
     } else if (!input.duration) {
-        errors.duration = 'Complete this field'
+        errors.duration = 'Complete this field';
+
     } else if (!input.season) {
-        errors.season = 'Select a season'
+        errors.season = 'Must select a season';
+
     } else if (!input.difficulty) {
-        errors.difficulty = 'Select a difficulty'
+        errors.difficulty = 'Select a difficulty';
+
     } else if (input.idCountry === []) {
-        errors.idCountry = 'Must select a country'
+        errors.idCountry = 'Must select a country';
+
+    } else if (!urlRegular.test(input.image)) {
+      errors.image = 'Invalid image format. Check image url must be PGN/JPG.';
     }
     return errors;
 }
@@ -62,7 +76,7 @@ export default function ActivityCreate () {
 
     function handleSelect(e) {
       if(Object.values(input.idCountry).includes(e.target.value)) {
-        alert('Country already selected')
+        Swal.fire({ title: 'Country already selected', icon: 'error' })
       } else {
         setInput({
             ...input,
@@ -74,10 +88,10 @@ export default function ActivityCreate () {
     function handleSubmit(e) {
         e.preventDefault()
         if (input.name === "" || input.duration === "" || input.season === "" || input.difficulty === "" ||
-        input.idCountry.length === 0) return alert('Must complete the fields')
+        input.idCountry.length === 0) return Swal.fire({ title: 'Must complete the fields', icon: 'error'})
 
         dispatch(postActivities(input))
-        alert('Activity created')
+        Swal.fire({ title: 'Activity created successfully!', icon: 'success' })
         setInput({
             name: "",
             duration: "",
@@ -151,8 +165,11 @@ export default function ActivityCreate () {
                   </select>
                   {errors.season && <p className="e">{errors.season}</p>}
                 </div>
+                <label>Image:</label>
+                <input className="i" autoComplete='off' type='text' name='image' placeholder='Insert URL here...' input={input.image} onChange={(e) => handleChange(e)} />
+                {errors.image && <p className="e">{errors.image}</p>}
+
                 {errors.idCountry && <p className="e">{errors.idCountry}</p>}
-    
                 <div>
                   <select
                   className="i"

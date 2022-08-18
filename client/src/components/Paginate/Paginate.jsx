@@ -1,10 +1,5 @@
 import React from 'react';
-import Pagination from '@mui/material/Pagination';
-import PaginationItem from '@mui/material/PaginationItem';
-import Stack from '@mui/material/Stack';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
-import '../Paginate/Paginate.css';
+import { container, pagination_ul } from './paginate.module.css'
 
 export default function Paginate({countriesPerPage, countries, paginate}) {
     const pageNumbers = [] 
@@ -14,16 +9,16 @@ export default function Paginate({countriesPerPage, countries, paginate}) {
     }
 
     return ( 
-    <> 
-        <nav className='pag-container'>
-            <ul className='ul'>
+    <div className={container}>
+         <nav className={pagination_ul}>
+            <ul>
                 {pageNumbers && pageNumbers.map(number => ( 
                     <li key={number}>
-                        <a className ='number-paginate' onClick={() => paginate(number)}>{number}</a> 
+                        <button onClick={() => paginate(number)}>{number}</button> 
                     </li>
                 ))}
             </ul>
         </nav>
-    </>
+    </div>
     )
 }
