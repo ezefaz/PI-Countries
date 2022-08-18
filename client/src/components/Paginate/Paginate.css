@@ -3,16 +3,9 @@
     background-color: transparent ;
     justify-content: center;
     align-items: center;
-    height: 7vh;
-    margin-top: 20px;
-    margin-bottom: 50px;
   }
   
   .ul {
-    padding: 0 0 0 0;
-    /* background-color: white; */
-    width: 50vw;
-    height: 80%;
     display: flex;    
     justify-content: center;
     align-items: center;
@@ -21,16 +14,15 @@
   
   .number-paginate {
     background-color: rgba(162, 162, 162, 0.113);
-    backdrop-filter: blur(4px);
     display: flex;
     align-items: center;
     justify-content: center ;
+    border: solid 1px gray;
     margin: 0 2px 0 3px;
     cursor: pointer;
     width: 1.8vw;
-    border-radius: 15px;
     height: 4vh;
-    color: #ffffff;
+    color: black;
     font-size: large;
   }
   

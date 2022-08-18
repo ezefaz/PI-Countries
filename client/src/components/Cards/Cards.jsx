@@ -9,6 +9,7 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 
+import { Link } from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux'
 import { Container } from './Card.js';
 
@@ -87,7 +88,9 @@ export default function Cards ({ name, continent, flag, capital, subregion, area
           >
               Subregion: {subregion} 
           </p>
+          <Link to='/activities' style={{ textDecoration: 'none' }}>
           <Button> Check Activities</Button>
+          </Link>
           <Button onClick={handleClose}>Close</Button>
         </Box>
         </Modal>

@@ -115,10 +115,11 @@ export default function Nav() {
             sx={{
               display: { xs: 'block', md: 'none' },
             }}
+            
           >
             {pages.map((page) => (
-              <MenuItem key={page} onClick={handleCloseNavMenu}>
-                <Typography textAlign="center" textDecoration= 'none' >{page}</Typography>
+              <MenuItem key={page} onClick={handleCloseNavMenu} >
+                <Typography textAlign="center" >{page}</Typography>
               </MenuItem>
             ))}
           </Menu>

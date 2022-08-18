@@ -85,7 +85,7 @@ export default function ActivityCreate () {
             difficulty: "",
             idCountry: [],
         })
-        history.push('/home')
+        history.push('/activities')
     }
     return (
       <div>
