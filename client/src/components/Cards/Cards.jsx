@@ -29,7 +29,7 @@ const style = {
 
 
 
-export default function Cards ({ name, continent, flag, capital, subregion, area, population, activities }) {
+export default function Cards ({ name, continent, flag, capital, subregion, area, population, activities, id }) {
   const [open, setOpen] = React.useState(false);
 
 
@@ -88,8 +88,8 @@ export default function Cards ({ name, continent, flag, capital, subregion, area
           >
               Subregion: {subregion} 
           </p>
-          <Link to='/activities' style={{ textDecoration: 'none' }}>
-          <Button> Check Activities</Button>
+          <Link to={'/detail/' + id  } style={{ textDecoration: 'none' }}>
+          <Button>Precise details</Button>
           </Link>
           <Button onClick={handleClose}>Close</Button>
         </Box>

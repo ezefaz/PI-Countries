@@ -29,24 +29,33 @@
   
   .input-act{
       position:relative;
-      margin-bottom:20px;
+      margin-top: 1rem;
   }
   
   .label-act{
       position:absolute;
-      top:0px;
-      left:0px;
       font-size:16px;
       color:#fff;	
-      pointer-events: none;
+      margin: auto;
       transition: all 0.5s ease-in-out;
   }
+  label {
+    display: flex;
+    justify-content: center;
+    
+  }
+  
   .i{ 
     border:0;
-    border-bottom:1px solid #555;  
+    border-bottom: 1px solid #555;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: fit-content;
     background:transparent;
     width:100%;
-    padding:8px 0 5px 0;
+    padding: 1rem;
+    margin: auto;
     font-size:16px;
     color:black;
   }
@@ -54,17 +63,20 @@
       border:none;	
       outline:none;
       border-bottom:1px solid #e74c3c;	
+
   }
   
   .btn-act{
       color:#fff;
       background-color:#e74c3c;
       outline: none;
+      display: flex;
       border: 0;
       color: #fff;
-      padding:10px 20px;
+      padding:10px;
       text-transform:uppercase;
       border-radius:5px;
+      margin: auto;
       cursor:pointer;
       position:relative;
   }
@@ -77,31 +89,29 @@
   }
   
   .op{
-      background-color: transparent
+      background-color: transparent;
+      width: 100%;
   }
   
   .text-area{
     box-shadow: inset 1px 2px 6px 5px #141e27;
     border-radius: 5px;
     width: 100%;
-    margin: 2rem auto;
+    margin: 4rem auto;
     padding: 10px 0;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    height: 8rem;
+    height: max-content;
   
   }
   
   .country-btn{
     background-color: transparent;
     border: grey 3px solid;
-    width: 3.2rem;
-    height: 3rem;
     justify-content: center;
     display: flex;
-    flex-direction: column;
+    margin: 1rem
   }
   
   .btn-del{
@@ -111,8 +121,6 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    margin: 0 0 0 33px;
-    padding: 0 0 0 0 ;
     border-radius: 10px;
     border: 0 0 0 0;
     cursor: pointer	;
@@ -120,9 +128,10 @@
   }
   
   .p-country{
-    margin: 5px;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
   }
-  
   .e{
       color: red;
       font-size: small;

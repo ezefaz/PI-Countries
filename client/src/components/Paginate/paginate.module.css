@@ -6,11 +6,13 @@
     backdrop-filter: blur(3px);
     border-radius: 2px;
     margin: 3rem 0;
+    color: black;
 }
 
 .pagination_ul li{
     list-style-type: none;
     display: inline-block;
+    color: black;
 }
 .pagination_ul li button {
     position: relative;
@@ -21,6 +23,7 @@
     color: #fff;
     font-size: 2vh;
     font-weight: 500;
+    color: black;
 }
 .pagination_ul li button:hover{
     cursor: pointer;
@@ -63,6 +66,7 @@
         color: #fff;
         font-size: 2vh;
         font-weight: 500;
+        color: black;
     }
     .container .pagination_ul li button:hover, 
 .container .pagination_ul li.active button {

@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';    
+import React from 'react';    
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
+
 import Home from './components/Home/Home'
 import LandingPage from './components/LandingPage/LandingPage'
 import Detail from './components/Detail/Detail'

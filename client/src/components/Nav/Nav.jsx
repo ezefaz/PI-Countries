@@ -119,7 +119,9 @@ export default function Nav() {
           >
             {pages.map((page) => (
               <MenuItem key={page} onClick={handleCloseNavMenu} >
+                <Link to={`/${page}`} style={{ textDecoration: 'none', color: 'black', textTransform: 'capitalize' }}>
                 <Typography textAlign="center" >{page}</Typography>
+                </Link>
               </MenuItem>
             ))}
           </Menu>
