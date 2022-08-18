@@ -4,9 +4,7 @@ const axios = require('axios')
 
 const getApiInfo = async () => {
     const apiUrl = await axios.get('https://restcountries.com/v3/all')
-    const apiInfo = await apiUrl.data.map(country => { 
-        
-        return {
+    const apiInfo = await apiUrl.data.map(country => ({ 
            id: country.cca3,
            name: country.name.common,
            flag: country.flags[0],
@@ -14,9 +12,9 @@ const getApiInfo = async () => {
            capital: country.capital, 
            subregion: country.subregion,
            area: country.area,
-           population: country.population
-        }
-    });
+           population: country.population,
+           googleMaps: country.maps.googleMaps,
+    }));
     const result = await Country.bulkCreate(apiInfo)
     return result;
 };

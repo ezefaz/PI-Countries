@@ -32,6 +32,10 @@ module.exports = (sequelize) => {
     },
     population: {
       type: DataTypes.INTEGER,
+    },
+    googleMaps: {
+      type: DataTypes.STRING,
+      allowNull: true
     }
   }, {timestamps: false});
 };

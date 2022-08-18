@@ -15,6 +15,11 @@ module.exports = (sequelize) => {
         },
         season: {
             type: DataTypes.ENUM('Summer', 'Autumn', 'Winter', 'Spring')
+        },
+        image: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            defaultValue: "https://images.assetsdelivery.com/compings_v2/yehorlisnyi/yehorlisnyi2104/yehorlisnyi210400016.jpg"
         }
     })
 };

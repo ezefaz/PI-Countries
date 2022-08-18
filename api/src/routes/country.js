@@ -15,21 +15,35 @@ router.get("/:id", async function (req, res) {
     }
 })
 
-    router.get("/", async function (req, res) {
-        const { name } = req.query;
-        let countries;
-        const countryDB = await Country.count(); 
-        countries = countryDB === 0 ?
-        await getApiInfo() :
-        await getDbInfo() 
+router.get("/", async function (req, res) {
+    const { name } = req.query;
+
+    let countries;
+
+    const countryDB = await Country.count(); 
+    countries = countryDB === 0 ?
+    await getApiInfo() :
+    await getDbInfo() 
+
     if ( name ) {
-        const countryName = countries.filter(n => n.name.toLowerCase().includes(name.toLowerCase())); // siempre va a comparar los valores en minuscula, sino la busqueda que se realice puede ser erronea
-        countryName.length ? 
-        res.status(200).send(countryName) :
-        res.status(404).send('No country been found')
+    const countryName = countries.filter(n => n.name.toLowerCase().includes(name.toLowerCase()));
+    countryName.length ? 
+    res.status(200).send(countryName) :
+    res.status(404).send('No country been found')
     }  else {
-       res.status(200).send(countries)  // si no hay ningun query, le mando todos los paises.
+    res.status(200).send(countries) 
     }
-    })
+});
+
+router.delete('/delete/:id', (req, res) => {
+    try {
+        let { id } = req.params;
+        Country.destroy({ where: { id: id } });
+        
+        res.send('Country deleted successfully')
+    } catch (error) {
+        console.log(error);
+    }
+});
 
 module.exports = router
