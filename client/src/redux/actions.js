@@ -11,7 +11,7 @@ export function getCountries () {
         } catch(err) {
             console.log(err)
         }
-    }
+    };
 };
 
 export function getCountriesDetails(id) {
