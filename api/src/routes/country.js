@@ -6,6 +6,7 @@ const { getDbInfo, getApiInfo } = require('../controller/controller')
 router.get("/:id", async function (req, res) {
     const id = req.params.id.toUpperCase()
     const allCountries = await getDbInfo(); 
+    
     if ( id ) {
         const idCountries = await allCountries.filter( e => e.id === id.toUpperCase() ) 
         idCountries.length?

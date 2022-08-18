@@ -1,13 +1,6 @@
 const { DataTypes } = require('sequelize');
 
 
-// [ ] Actividad Turística con las siguientes propiedades:
-// ID
-// Nombre
-// Dificultad (Entre 1 y 5)
-// Duración
-// Temporada (Verano, Otoño, Invierno o Primavera)
-
 module.exports = (sequelize) => {
     // defino el modelo
     sequelize.define('activity', {
@@ -24,4 +17,4 @@ module.exports = (sequelize) => {
             type: DataTypes.ENUM('Summer', 'Autumn', 'Winter', 'Spring')
         }
     })
-}
+};

@@ -19,9 +19,10 @@ const getApiInfo = async () => {
     });
     const result = await Country.bulkCreate(apiInfo)
     return result;
-}
+};
+
 const getDbInfo = async() => { 
-    return await Country.findAll({ 
+    return await Country.findAll({
         include: {
             model: Activity,
             attributes: ['name', 'difficulty', 'duration', 'season'],
@@ -30,11 +31,10 @@ const getDbInfo = async() => {
             }
         }
     })
-}
+};
+
 const getActivities = async() => {
-    return await Activity.findAll({
-        include: Country
-    })
-}
+    return await Activity.findAll({ include: Country  })
+};
 
 module.exports = { getDbInfo, getApiInfo, getActivities}
